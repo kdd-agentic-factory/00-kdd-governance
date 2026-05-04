@@ -1,119 +1,49 @@
-# Plantilla: Software Design Document (SDD)
+# Design — [Feature Name]
 
-## Información General
+## 1. Architecture Overview
 
-- **Proyecto**: [Nombre del proyecto]
-- **Versión**: 1.0
-- **Fecha**: [Fecha]
-- **Autor**: [Nombre]
-- **Estado**: [Draft | Review | Approved | Implemented]
+[High-level architecture and design intent.]
 
-## Resumen Ejecutivo
+## 2. Affected Repositories
 
-[Descripción concisa del diseño]
+- ...
 
-## Requisitos Abordados
+## 3. Components
 
-[Referencia al documento de requisitos aprobado]
+- ...
 
-## Visión Arquitectónica
+## 4. Data Contracts
 
-[Descripción de alto nivel de la arquitectura]
+[Inputs, outputs, schemas, ownership and validation rules.]
 
-## Componentes Principales
+## 5. APIs
 
-### Componente 1: [Nombre]
-- **Responsabilidad**: [Descripción]
-- **Interfaz**: [Descripción de interface]
-- **Dependencias**: [Lista de dependencias]
+[Internal and external APIs.]
 
-### Componente 2: [Nombre]
-- **Responsabilidad**: [Descripción]
-- **Interfaz**: [Descripción de interface]
-- **Dependencias**: [Lista de dependencias]
+## 6. MCP Tools
 
-## Flujos Principales
+[Required MCP tools and permissions.]
 
-### Flujo 1: [Nombre]
-```
-[Diagrama de flujo o descripción]
-```
+## 7. Skills Required
 
-### Flujo 2: [Nombre]
-```
-[Diagrama de flujo o descripción]
-```
+[Required skills or AutoSkill candidates.]
 
-## Consideraciones de Seguridad
+## 8. Observability
 
-- [Consideración 1]
-- [Consideración 2]
+[Logs, metrics, traces, alerts and audit events.]
 
-## Consideraciones de Rendimiento
+## 9. Security and Approval
 
-- [Consideración 1]
-- [Consideración 2]
+[Security controls and human approval requirements.]
 
-## Consideraciones de Escalabilidad
+## 10. Testing Strategy
 
-- [Consideración 1]
-- [Consideración 2]
+[Unit, integration, end-to-end, performance, simulation or reproducibility tests.]
 
-## Plan de Pruebas
+## 11. Rollback Strategy
 
-### Unit Tests
-- [Test 1]
-- [Test 2]
-
-### Integration Tests
-- [Test 1]
-- [Test 2]
-
-### Performance Tests
-- [Test 1]
-- [Test 2]
-
-## Plan de Despliegue
-
-### Fase 1: Preparación
-- [Tarea 1]
-- [Tarea 2]
-
-### Fase 2: Despliegue
-- [Tarea 1]
-- [Tarea 2]
-
-### Fase 3: Validación
-- [Tarea 1]
-- [Tarea 2]
-
-## Monitoreo y Observabilidad
-
-### Métricas Principales
-- [Métrica 1]
-- [Métrica 2]
-
-### Alertas
-- [Alerta 1]
-- [Alerta 2]
-
-## Cambios Futuros Esperados
-
-- [Cambio 1]
-- [Cambio 2]
-
-## Decisiones de Diseño y Justificación
-
-### Decisión 1: [Nombre]
-- **Contexto**: [Contexto]
-- **Decisión**: [Decisión]
-- **Justificación**: [Justificación]
-- **Alternativas Consideradas**: [Alternativas]
-
-## Siguiente Paso
-
-[Próximo paso: Development | More Review | Reject]
+[How the change can be reverted safely.]
 
 ---
 
-*Plantilla de [00-kdd-governance](../README.md)*
+*Template from [00-kdd-governance](../README.md)*

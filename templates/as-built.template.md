@@ -1,125 +1,41 @@
-# Plantilla: As-Built Document
+# As-Built — [Feature Name]
 
-## Información General
+## 1. Implemented Scope
 
-- **Proyecto**: [Nombre del proyecto]
-- **Versión**: 1.0
-- **Fecha de Completación**: [Fecha]
-- **Equipo Responsable**: [Nombres]
-- **Estado**: [Completed | Deployed | Operational]
+[What was actually implemented.]
 
-## Resumen Ejecutivo
+## 2. Deviations from Design
 
-[Descripción de lo que se ha construido]
+[Differences from the approved design and why they occurred.]
 
-## Comparación: Diseño vs Implementación
+## 3. Final Architecture
 
-### Cambios Realizados
-| Componente | Diseño Original | Implementación Final | Razón del Cambio |
-|---|---|---|---|
-| | | | |
+[Final architecture, components and repository boundaries.]
 
-### Desviaciones de Cronograma
-- [Desviación 1]: [Razón] [Impacto]
-- [Desviación 2]: [Razón] [Impacto]
+## 4. Tests Executed
 
-## Arquitectura Implementada
+[Commands, results, coverage and unresolved test gaps.]
 
-[Diagrama y descripción de la arquitectura implementada]
+## 5. Observability Added
 
-## Componentes Desplegados
+[Logs, metrics, traces, alerts and audit events added.]
 
-### Componente 1: [Nombre]
-- **Versión**: [Versión]
-- **Localización**: [URL/Ruta]
-- **Estado**: [Running | Standby | Offline]
-- **Responsable**: [Nombre]
+## 6. Security Notes
 
-### Componente 2: [Nombre]
-- **Versión**: [Versión]
-- **Localización**: [URL/Ruta]
-- **Estado**: [Running | Standby | Offline]
-- **Responsable**: [Nombre]
+[Security considerations, approvals and residual risks.]
 
-## Resultados de Testing
+## 7. Known Limitations
 
-### Unit Tests
-- **Total**: [N] tests
-- **Passed**: [N] tests
-- **Skipped**: [N] tests
-- **Failed**: [N] tests
-- **Coverage**: [X]%
+[Known limitations and follow-up work.]
 
-### Integration Tests
-- **Total**: [N] tests
-- **Passed**: [N] tests
-- **Skipped**: [N] tests
-- **Failed**: [N] tests
+## 8. Evidence for Paper
 
-### Performance Tests
-- **Métrica 1**: [Valor] [vs Target]
-- **Métrica 2**: [Valor] [vs Target]
+[Experiment, dataset, model, metric or paper evidence generated.]
 
-## Métricas de Calidad
+## 9. Related Commits / PRs
 
-- **Lines of Code**: [N]
-- **Code Duplication**: [X]%
-- **Complexity**: [Score]
-- **Security Issues**: [N]
-- **Technical Debt**: [Score]
-
-## Documentación Entregada
-
-- [ ] README
-- [ ] API Documentation
-- [ ] User Guide
-- [ ] Operations Guide
-- [ ] Architecture Diagram
-- [ ] Database Schema
-
-## Procedimientos Operativos
-
-### Startup
-[Pasos para iniciar]
-
-### Shutdown
-[Pasos para detener]
-
-### Backup/Restore
-[Procedimiento de backup]
-
-### Escalado
-[Cómo escalar]
-
-## Contactos y Responsables
-
-| Rol | Nombre | Email | Disponibilidad |
-|---|---|---|---|
-| Owner | | | |
-| Tech Lead | | | |
-| Operations | | | |
-
-## Lessons Learned
-
-### Qué Salió Bien
-- [Lección 1]
-- [Lección 2]
-
-### Qué Salió Mal
-- [Lección 1]
-- [Lección 2]
-
-### Mejoras Futuras
-- [Mejora 1]
-- [Mejora 2]
-
-## Plan de Mantenimiento
-
-- **Monitoreo**: [Frecuencia]
-- **Actualización de Dependencias**: [Frecuencia]
-- **Revisión de Seguridad**: [Frecuencia]
-- **Auditoría**: [Frecuencia]
+- ...
 
 ---
 
-*Plantilla de [00-kdd-governance](../README.md)*
+*Template from [00-kdd-governance](../README.md)*

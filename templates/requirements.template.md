@@ -1,74 +1,57 @@
-# Plantilla: Documento de Requisitos
+# Requirements — [Feature Name]
 
-## Información General
+## 1. Objective
 
-- **Proyecto**: [Nombre del proyecto]
-- **Versión**: 1.0
-- **Fecha**: [Fecha]
-- **Autor**: [Nombre]
-- **Estado**: [Draft | Review | Approved | Implemented]
+Describe the goal of the feature.
 
-## Resumen Ejecutivo
+## 2. User Story
 
-[Descripción concisa del objetivo y alcance]
+As a [role], I want [capability], so that [benefit].
 
-## Problema a Resolver
+## 3. Scope
 
-[Descripción del problema que motiva este proyecto]
+### In Scope
 
-## Objetivos del Proyecto
+- ...
 
-1. [Objetivo 1]
-2. [Objetivo 2]
-3. [Objetivo 3]
+### Out of Scope
 
-## Requisitos Funcionales
+- ...
 
-### RF-001: [Nombre del Requisito]
-- **Descripción**: [Descripción detallada]
-- **Prioridad**: [Crítica | Alta | Media | Baja]
-- **Criterios de Aceptación**: [Listado de criterios]
+## 4. Functional Requirements
 
-### RF-002: [Nombre del Requisito]
-- **Descripción**: [Descripción detallada]
-- **Prioridad**: [Crítica | Alta | Media | Baja]
-- **Criterios de Aceptación**: [Listado de criterios]
+- FR-001:
+- FR-002:
 
-## Requisitos No-Funcionales
+## 5. Non-Functional Requirements
 
-### RNF-001: Rendimiento
-- [Especificación de rendimiento]
+- Latency:
+- Security:
+- Observability:
+- Reproducibility:
+- Reliability:
 
-### RNF-002: Seguridad
-- [Especificación de seguridad]
+## 6. KDD Stage
 
-### RNF-003: Escalabilidad
-- [Especificación de escalabilidad]
+Selection | Preprocessing | Transformation | Data Mining | Interpretation | Documentation | Deployment
 
-## Restricciones
+## 7. Required Data
 
-- [Restricción 1]
-- [Restricción 2]
+- ...
 
-## Dependencias
+## 8. Acceptance Criteria
 
-- [Dependencia 1]
-- [Dependencia 2]
+- AC-001:
+- AC-002:
 
-## Riesgos Identificados
+## 9. Approval Requirements
 
-- [Riesgo 1]: [Mitigación]
-- [Riesgo 2]: [Mitigación]
+Does this feature require human approval?
 
-## Criterios de Éxito
+## 10. Related Repositories
 
-- [Criterio 1]
-- [Criterio 2]
-
-## Siguiente Paso
-
-[Paso siguiente en el ciclo KDD]
+- ...
 
 ---
 
-*Plantilla de [00-kdd-governance](../README.md)*
+*Template from [00-kdd-governance](../README.md)*

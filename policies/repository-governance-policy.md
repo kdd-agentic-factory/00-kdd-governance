@@ -1,70 +1,77 @@
-# Política de Governance de Repositorios
+# Repository Governance Policy
 
-## Propósito
-Establecer estándares para la creación y gestión de repositorios en la organización.
+## Purpose
 
-## Estructura de Repositorios
+Define how repositories are created, modified, governed and retired.
 
-### Repositorio de Governance (00-kdd-governance)
-- Políticas y estándares
-- Decisiones arquitectónicas
-- Plantillas
-- Métricas
+## Scope
 
-### Repositorios de Arquitectura (01-kdd-architecture-*)
-- Diseños técnicos
-- Estándares de implementación
-- Arquitectura de soluciones
+This policy applies to all repositories `00` to `17` and any future repository added to the KDD organization.
 
-### Repositorios de Capabilidades (02-kdd-skills, 03-kdd-agents)
-- Skills reutilizables
-- Agentes del sistema
-- Integraciones
+## Repository Creation Requirements
 
-### Repositorios de Datos (04-kdd-data)
-- Datasets
-- Esquemas
-- Validaciones
+Every repository must have:
 
-### Repositorios de Proyectos
-- Código específico de proyectos
-- Documentación de proyectos
-- Artefactos del ciclo KDD
+- README.
+- `AGENTS.md`.
+- Clear owner.
+- Purpose and repository layer.
+- Maturity level.
+- Minimum tests.
+- CI pipeline.
+- Security scan when dependencies or containers exist.
+- Governance references to `00-kdd-governance`.
 
-## Requerimientos para Todo Repositorio
+## Repository Modification Requirements
 
-### Documentación
-- README.md con descripción clara
-- GOVERNANCE.md con políticas específicas
-- CONTRIBUTING.md con guías de contribución
-- Changelog mantenido
+An ADR is required when a change:
 
-### Control de Versiones
-- Branch protection rules
-- Require pull request reviews
-- Require status checks to pass
-- Restricción a branches específicas para producción
+- changes the repository map,
+- creates a new repository,
+- retires a repository,
+- changes dependency direction,
+- changes ownership boundaries,
+- moves responsibilities between repositories,
+- introduces a new runtime, platform or critical integration.
 
-### CI/CD
-- Automated testing
-- Automated linting
-- Automated security scanning
-- Deployment pipeline
+## Required Metadata
 
-### Auditoría
-- Todos los cambios requieren commit comments
-- PRs requieren descripción detallada
-- Histórico de cambios accesible
-- Logs de auditoría centralizados
+Repository metadata must be registered in:
 
-## Ciclo de Vida de Repositorio
+- `repo-catalog/repositories.yaml`
+- `repo-catalog/dependency-map.yaml`
+- `repo-catalog/ownership-map.yaml`
+- `repo-catalog/maturity-map.yaml`
 
-1. **Creación**: Aprobación de governance requerida
-2. **Operación**: Cumplimiento de políticas
-3. **Mantenimiento**: Actualizaciones según cronograma
-4. **Deprecación**: Comunicación anticipada
-5. **Archivado**: Preservación de histórico
+## Maturity Levels
+
+| Level | Meaning |
+|---|---|
+| planned | Defined but not implemented |
+| bootstrap | Initial structure exists |
+| active | Used with basic traceability |
+| mature | Used with metrics, CI and operational evidence |
+| retired | Archived and not used for new work |
+
+## Minimum CI
+
+Each implementation repository must include:
+
+- test execution,
+- lint or static validation,
+- dependency/security checks when applicable,
+- governance artifact check when applicable.
+
+## Forbidden Changes
+
+Repositories must not:
+
+- assume responsibilities assigned to another repository without ADR,
+- remove README or `AGENTS.md`,
+- disable CI without approval,
+- introduce unowned services,
+- bypass governance rules from `00-kdd-governance`.
 
 ---
 
-*Parte de [00-kdd-governance](../README.md)*
+*Part of [00-kdd-governance](../README.md)*

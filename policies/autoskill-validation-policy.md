@@ -1,72 +1,65 @@
-# Política de Validación de AutoSkills
+# AutoSkill Validation Policy
 
-## Propósito
-Establecer proceso de validación para skills autogenerados por agentes.
+## Purpose
 
-## Definición de AutoSkill
-Skills generados automáticamente por agentes inteligentes en base a patrones detectados.
+Define how an AutoSkill moves from candidate to validated reusable skill.
 
-## Ciclo de Vida de AutoSkill
+## Scope
 
-### Generación
-- Agente detecta patrón reutilizable
-- Genera código de skill
-- Solicita validación
+This policy applies to all AutoSkills generated, proposed or discovered by agents.
 
-### Validación Técnica
-- Análisis estático de código
-- Testing automático
-- Cobertura de código > 80%
-- Sin vulnerabilidades de seguridad
-- Performance acceptable
+## States
 
-### Validación Funcional
-- Comportamiento correcto
-- Interfaz consistente
-- Documentación presente
-- Casos de uso validados
+| State | Meaning |
+|---|---|
+| candidate | Proposed by an agent or workflow |
+| under_review | Being evaluated for safety, usefulness and quality |
+| validated | Approved for use as a reusable skill |
+| rejected | Not approved |
+| archived | Retired or preserved for historical evidence |
 
-### Validación de Governance
-- Cumple políticas
-- Sin violaciones de permisos
-- Auditoría trail completo
-- Aprobación por governance
+## Validation Conditions
 
-### Activación
-- Skill queda disponible para todos
-- Métricas de uso comienzan
-- Monitoreo de performance
+An AutoSkill may become `validated` only if:
 
-## Criterios de Validación
+- it has `skill.yaml`,
+- it has tests,
+- it has documentation,
+- it has clear inputs and outputs,
+- it does not violate policies,
+- it does not require excessive permissions,
+- it was approved by a human reviewer,
+- it has a skill card,
+- it has observable failure modes,
+- it records owner and version.
 
-### Obligatorios
-- ✓ Tests pasados
-- ✓ Sin vulnerabilidades críticas
-- ✓ Interfaz clara
-- ✓ Documentación en inglés y español
+## Required Review
 
-### Muy Recomendados
-- ✓ Benchmarks de performance
-- ✓ Ejemplos de uso
-- ✓ Casos de error bien manejados
-- ✓ Métricas de observabilidad
+Review must cover:
 
-## Monitoreo Post-Activación
+- functionality,
+- security,
+- permissions,
+- reproducibility,
+- documentation,
+- test coverage,
+- reuse value,
+- rollback or deprecation plan.
 
-- Uso de skill
-- Tasa de error
-- Performance
-- Feedback de usuarios
-- Cambios recomendados
+## Forbidden Promotion
 
-## Deprecación de AutoSkills
+Agents must not promote AutoSkills directly to production or validated state. They may only create candidates and prepare evidence for human review.
 
-AutoSkills pueden deprecarse si:
-- Uso < 1% de agentes
-- Tasa de error > 5%
-- Mejor alternativa disponible
-- Cambios de arquitectura
+## Archival
+
+AutoSkills must be archived when:
+
+- they are superseded,
+- they become unsafe,
+- they are unused,
+- they violate updated policy,
+- their dependencies are retired.
 
 ---
 
-*Parte de [00-kdd-governance](../README.md)*
+*Part of [00-kdd-governance](../README.md)*

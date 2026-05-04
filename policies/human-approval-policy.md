@@ -1,45 +1,61 @@
-# Política de Aprobación Humana
+# Human Approval Policy
 
-## Propósito
-Establecer procesos de aprobación humana para acciones críticas en el sistema agentico.
+## Purpose
 
-## Alcance
-Se aplica a todas las acciones que pueden impactar significativamente el sistema, datos o usuarios.
+Define which actions require explicit human approval before execution.
 
-## Acciones Requieren Aprobación
+## Scope
 
-### Críticas (Aprobación Inmediata)
-- Cambios a políticas de seguridad
-- Alteraciones de base de datos de producción
-- Cambios de permisos de agentes
-- Despliegues a producción
-- Eliminación de datos
+This policy applies to all agents, workflows and repositories in the KDD-governed race engineering platform.
 
-### Mayores (Aprobación en 24h)
-- Nuevas funcionalidades de agentes
-- Cambios de arquitectura
-- Cambios a SDD
-- Cambios de dependencias críticas
+## Mandatory Human Approval
 
-### Menores (Aprobación en 72h)
-- Actualizaciones de documentación
-- Correcciones de bugs menores
-- Refactorización sin cambio de comportamiento
-- Actualizaciones de dependencias
+Human approval is required for:
 
-## Proceso de Aprobación
+- Kubernetes deployments.
+- Infrastructure changes.
+- Destructive GitHub actions, including branch deletion, force push, repository deletion, permission removal or history rewriting.
+- AutoSkill publication or promotion to validated/production state.
+- Critical setup recommendations.
+- Engine map changes.
+- Part recommendations that affect safety.
+- Model changes used in operational prediction.
+- Simulations that would substitute or override human decisions.
+- Security policy changes.
+- Agent permission changes.
+- Production data deletion or irreversible transformation.
 
-1. **Solicitud**: Agente o desarrollador solicita aprobación
-2. **Revisión**: Equipo designado revisa en 24h
-3. **Validación**: Verificación de políticas y riesgos
-4. **Aprobación**: Decisión explícita
-5. **Ejecución**: Implementación de cambio aprobado
-6. **Auditoría**: Registro de aprobación y ejecución
+## Approval Levels
 
-## Excepciones
-- Emergencias de seguridad: Aprobación posterior dentro de 4h
-- Incidentes de producción: Aprobación dentro de 1h
+| Level | Description | Examples |
+|---|---|---|
+| Minor | Low-risk, reversible, non-operational change | Documentation update, non-behavioral refactor |
+| Major | System behavior or architecture may change | New agent feature, model version update, repository boundary change |
+| Critical | Safety, production, infrastructure or race decision impact | Kubernetes deployment, setup change, engine map recommendation |
+
+## Required Approval Record
+
+Every approval request must include:
+
+- Request ID.
+- Requester.
+- Repository affected.
+- KDD stage.
+- Risk level.
+- Evidence.
+- Proposed action.
+- Rollback or mitigation plan.
+- Approver.
+- Decision: `approved`, `rejected` or `deferred`.
+
+## Execution Rule
+
+Agents may prepare approval requests, but they must not execute actions requiring approval until the approval record is explicit and traceable.
+
+## Emergency Exception
+
+Emergency actions may proceed only when required to prevent immediate safety, security or data loss. The action must be recorded and reviewed within 4 hours.
 
 ---
 
-*Parte de [00-kdd-governance](../README.md)*
+*Part of [00-kdd-governance](../README.md)*
