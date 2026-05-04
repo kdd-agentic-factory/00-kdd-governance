@@ -1,90 +1,123 @@
 # 00-kdd-governance
 
-Repositorio maestro de gobierno del ecosistema KDD.
+This repository defines the governance layer for the KDD-governed agentic race engineering platform.
 
-Este repositorio define el modelo de gobierno KDD, las politicas de trabajo de los agentes, las plantillas obligatorias, las decisiones arquitectonicas, las metricas de control, el mapa completo de la organizacion y las reglas que deben cumplir todos los demas repositorios.
+It provides:
 
-Su funcion es garantizar que el ecosistema no se convierta en una coleccion de servicios, agentes y dashboards sin trazabilidad. Todo lo que se implemente en los repositorios `01` a `17` debe estar gobernado por este repositorio.
+- KDD lifecycle rules.
+- Agent operating model.
+- Specification-Driven Development templates.
+- Architecture Decision Records.
+- Human approval policies.
+- Repository catalog.
+- Metrics definitions.
+- Paper alignment artifacts.
+- Safety and traceability rules.
 
-## Principios no negociables
+No implementation repository may bypass the governance rules defined here.
 
-- Ningun agente implementa sin especificacion.
-- Ningun servicio se despliega sin diseno.
-- Ninguna recomendacion critica se ejecuta sin aprobacion.
-- Ningun experimento es valido sin metricas.
-- Ningun resultado entra al paper sin trazabilidad.
+## Repository Map
 
-## Enfoque
+`00-kdd-governance` governs repositories `01` to `17`.
 
-KDD adopta Specification-Driven Development como mecanismo de control agentico. Los requisitos funcionales en Markdown actuan como artefacto previo y restrictivo antes de cualquier generacion de codigo.
-
-El flujo obligatorio pasa por:
-
-1. Requisitos.
-2. Viabilidad.
-3. Diseno.
-4. Tareas.
-5. Implementacion con TDD.
-6. Verificacion as-built.
-7. Medicion y trazabilidad.
-
-`AGENTS.md` funciona como archivo maestro de contexto para agentes: un README para maquinas que declara arquitectura, convenciones, permisos, capacidades y politicas aplicables.
-
-## Artefactos de gobierno
-
-| Area | Artefactos |
+| Layer | Repositories |
 |---|---|
-| Gobierno | `AGENTS.md`, `organization-map.md`, `policies/` |
-| Arquitectura | `design.md`, `adr/`, `templates/design.template.md` |
-| Ciclo KDD | `kdd-lifecycle.md`, `templates/requirements.template.md`, `templates/feasibility.template.md`, `templates/tasks.template.md`, `templates/as-built.template.md` |
-| Control agentico | `agentic-operating-model.md`, `policies/agent-permission-policy.md`, `policies/human-approval-policy.md` |
-| Evidencia cientifica | `templates/experiment-card.template.md`, `templates/dataset-card.template.md`, `templates/paper-section.template.md` |
-| Metricas | `metrics/kdd-traceability-score.md`, `metrics/documentation-completeness-score.md`, `metrics/agentic-factor-of-safety.md`, `metrics/skill-reuse-ratio.md` |
-| Schemas | `schemas/` |
-| Workflows | `workflows/` |
-| Catalogo | `repo-catalog/` |
-| Paper | `paper-alignment/` |
-| Diagramas | `diagrams/` |
-| Automatizacion | `scripts/`, `.github/` |
+| Governance | `00-kdd-governance` |
+| Agentic Control | `01-agent-orchestrator`, `02-mcp-gateway`, `04-skills-autoskills-registry`, `07-agentic-workflows` |
+| Knowledge and Data | `03-rag-cag-knowledge-layer`, `06-kdd-data-pipelines` |
+| Runtime | `10-infra-docker`, `11-infra-kubernetes`, `12-ci-cd-security` |
+| Product | `13-ui-command-center`, `15-race-command-center`, `16-race-ai-copilot`, `17-digital-twin-simulation-lab` |
+| Research | `08-experimentation-lab`, `14-paper-reproducibility-kit` |
 
-## Regla para repositorios `01` a `17`
+See [organization-map.md](organization-map.md) and [repo-catalog/repositories.yaml](repo-catalog/repositories.yaml).
 
-Cada repositorio del ecosistema debe poder demostrar, antes de implementar o desplegar, que sus cambios tienen:
+## KDD Lifecycle
 
-- Requisito aprobado.
-- Viabilidad revisada.
-- Diseno aprobado o ADR aplicable.
-- Tareas trazadas a requisitos.
-- Pruebas definidas antes o junto con la implementacion.
-- Evidencia as-built tras el despliegue.
-- Metricas que permitan validar resultado, seguridad y valor.
+KDD is the administrative lifecycle for data, documents, models, agents, experiments, recommendations and deployments:
 
-La ausencia de cualquiera de estos artefactos bloquea implementacion, despliegue o uso cientifico del resultado, segun corresponda.
+1. Selection.
+2. Preprocessing.
+3. Transformation.
+4. Data Mining.
+5. Interpretation.
+6. Documentation.
+7. Deployment.
 
-## Papel dentro de la organizacion
+See [kdd-lifecycle.md](kdd-lifecycle.md).
 
-`00-kdd-governance` es el repositorio raiz de gobierno. Los repositorios `01` a `17` implementan capacidades concretas, pero sus permisos, artefactos, decisiones, metricas y reglas de operacion nacen aqui.
+## SDD Flow
 
-Este repositorio responde a las preguntas organizativas basicas: como se trabaja, que puede o no puede hacer un agente, que requiere aprobacion humana, como se crea una feature, como se crea una skill, como se valida una AutoSkill, como se documenta una decision, como se mide la trazabilidad, como se integra cada resultado con el paper, que responsabilidad tiene cada repositorio y que significa KDD en este proyecto.
+Every feature must follow Specification-Driven Development:
 
-La matriz completa de responsabilidades vive en [organization-map.md](organization-map.md).
+1. `requirements.md`
+2. `feasibility.md`
+3. `design.md`
+4. `tasks.md`
+5. tests
+6. implementation
+7. `as-built.md`
+8. ADR update when architecture changes
 
-## Documentos principales
+Templates live in [templates/](templates/). The operational workflow is [workflows/sdd-feature-lifecycle.md](workflows/sdd-feature-lifecycle.md).
 
-- [Ciclo de Vida KDD](kdd-lifecycle.md)
-- [Principios de Diseno y Arquitectura](design.md)
-- [Modelo Operativo Agentico](agentic-operating-model.md)
-- [Organigrama y Mapeo de Roles](organization-map.md)
-- [Registro de Agentes](AGENTS.md)
-- [Estandares de Repositorio](repository-standards.md)
-- [Guia de Contribucion](contribution-guide.md)
-- [Glosario](glossary.md)
-- [Politicas](policies/)
-- [Plantillas](templates/)
-- [Metricas](metrics/)
-- [Schemas](schemas/)
-- [Workflows](workflows/)
-- [Catalogo de Repositorios](repo-catalog/)
-- [Alineacion con Paper](paper-alignment/)
-- [Diagramas](diagrams/)
-- [Decisiones Arquitectonicas](adr/)
+## Mandatory Policies
+
+The following policy groups are mandatory:
+
+- Human approval: [policies/human-approval-policy.md](policies/human-approval-policy.md)
+- Agent permissions: [policies/agent-permission-policy.md](policies/agent-permission-policy.md)
+- Repository governance: [policies/repository-governance-policy.md](policies/repository-governance-policy.md)
+- Data governance: [policies/data-governance-policy.md](policies/data-governance-policy.md)
+- Model governance: [policies/model-governance-policy.md](policies/model-governance-policy.md)
+- AutoSkill validation: [policies/autoskill-validation-policy.md](policies/autoskill-validation-policy.md)
+- MCP tool use: [policies/mcp-tool-use-policy.md](policies/mcp-tool-use-policy.md)
+- Kubernetes changes: [policies/kubernetes-change-policy.md](policies/kubernetes-change-policy.md)
+- Copilot safety: [policies/copilot-safety-policy.md](policies/copilot-safety-policy.md)
+- Race engineering decisions: [policies/race-engineering-decision-policy.md](policies/race-engineering-decision-policy.md)
+- Telemetry data: [policies/telemetry-data-policy.md](policies/telemetry-data-policy.md)
+- Simulation validation: [policies/simulation-validation-policy.md](policies/simulation-validation-policy.md)
+- Security: [policies/security-policy.md](policies/security-policy.md)
+
+## How to Create a New ADR
+
+1. Copy [templates/adr.template.md](templates/adr.template.md).
+2. Create `adr/ADR-XXXX-short-title.md`.
+3. Define context, decision, alternatives and consequences.
+4. Link affected repositories and policies.
+5. Request review when the decision affects architecture, security, data, deployment or repository boundaries.
+
+## How to Create a New Feature
+
+1. Create requirements with [templates/requirements.template.md](templates/requirements.template.md).
+2. Create feasibility with [templates/feasibility.template.md](templates/feasibility.template.md).
+3. Create design with [templates/design.template.md](templates/design.template.md).
+4. Create tasks with [templates/tasks.template.md](templates/tasks.template.md).
+5. Implement with tests.
+6. Produce as-built evidence with [templates/as-built.template.md](templates/as-built.template.md).
+7. Update metrics and paper evidence if applicable.
+
+## How to Validate an AutoSkill
+
+1. Register the candidate with [templates/autoskill-candidate.template.md](templates/autoskill-candidate.template.md).
+2. Follow [workflows/autoskill-validation-lifecycle.md](workflows/autoskill-validation-lifecycle.md).
+3. Validate permissions, tests, safety and reuse value.
+4. Convert to [templates/skill-card.template.md](templates/skill-card.template.md) only after approval.
+
+## How to Register Paper Evidence
+
+1. Link the result to a research question in [paper-alignment/research-questions.md](paper-alignment/research-questions.md).
+2. Register experiment, dataset, model and code version.
+3. Use [templates/experiment-card.template.md](templates/experiment-card.template.md), [templates/dataset-card.template.md](templates/dataset-card.template.md), [templates/model-card.template.md](templates/model-card.template.md) and [templates/paper-section.template.md](templates/paper-section.template.md).
+4. Store reproducibility evidence in `14-paper-reproducibility-kit`.
+5. Record limitations in [paper-alignment/threat-to-validity.md](paper-alignment/threat-to-validity.md).
+
+## Core Documents
+
+- [AGENTS.md](AGENTS.md)
+- [design.md](design.md)
+- [organization-map.md](organization-map.md)
+- [kdd-lifecycle.md](kdd-lifecycle.md)
+- [agentic-operating-model.md](agentic-operating-model.md)
+- [repository-standards.md](repository-standards.md)
+- [contribution-guide.md](contribution-guide.md)
+- [glossary.md](glossary.md)

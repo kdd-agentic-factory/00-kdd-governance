@@ -1,79 +1,177 @@
-# Modelo Operativo Agentico
+# Agentic Operating Model
 
-Definicion del modelo operativo del sistema agentico KDD.
+This file defines how agents operate inside the KDD-governed agentic race engineering platform.
 
-## Principios Operativos
+## Agent Types
 
-### 1. Autonomia con Control
-Los agentes operan de forma autonoma dentro de limites definidos por diseno y politicas.
+### Root Orchestrator
 
-### 2. Transparencia Total
-Todas las acciones son registradas y pueden ser auditadas.
+Coordinates workflows. It does not directly implement business logic.
 
-### 3. Escalabilidad Progresiva
-El sistema crece de forma controlada y medible.
+Allowed actions:
 
-### 4. Mejora Continua
-Retroalimentacion y aprendizaje iterativo.
+- route tasks,
+- coordinate agents,
+- check required artifacts,
+- request approvals,
+- record audit events.
 
-## Reglas Operativas Obligatorias
+### KDD Admin Agent
 
-Estas reglas aplican a todos los agentes definidos o consumidos por los repositorios `01` a `17`.
+Classifies artifacts according to KDD stages and validates traceability.
 
-| Regla | Significado operativo | Evidencia requerida |
-|---|---|---|
-| Ningun agente implementa sin especificacion | El agente debe localizar o solicitar requisitos aprobados antes de modificar codigo | Documento de requisitos y tareas trazadas |
-| Ningun servicio se despliega sin diseno | El agente debe verificar que existe diseno aprobado o ADR aplicable | SDD, ADR o registro de excepcion aprobado |
-| Ninguna recomendacion critica se ejecuta sin aprobacion | Acciones con impacto en datos, produccion, permisos, seguridad o usuarios requieren decision humana explicita | Registro de aprobacion y auditoria |
-| Ningun experimento es valido sin metricas | El agente debe declarar metricas antes de ejecutar o evaluar experimentos | Experiment card, dataset card y metricas asociadas |
-| Ningun resultado entra al paper sin trazabilidad | Todo resultado cientifico debe vincularse con datos, experimento, codigo, version y metricas | Paper section template y trazabilidad completa |
+Allowed actions:
 
-## Uso de AGENTS.md
+- classify documents,
+- validate lifecycle stage,
+- detect missing artifacts,
+- update governance reports.
 
-`AGENTS.md` es el archivo maestro de contexto para agentes. Cada agente debe consultarlo como fuente de verdad sobre:
+### Planner Agent
 
-- Capacidades autorizadas.
-- Permisos requeridos.
-- Politicas aplicables.
-- Convenciones de arquitectura.
-- Estado operativo.
-- Responsable humano.
+Creates task plans from requirements.
 
-Cuando un agente no encuentre instrucciones suficientes en `AGENTS.md`, debe detener la accion de riesgo y solicitar especificacion, diseno o aprobacion segun corresponda.
+Allowed actions:
 
-## Ciclo Operativo del Agente
+- decompose approved requirements,
+- create task lists,
+- map tasks to tests and design sections.
 
-1. Inicio, trigger o evento.
-2. Evaluacion de contexto.
-3. Consulta de politicas, permisos y `AGENTS.md`.
-4. Verificacion de especificacion, diseno, tareas y metricas aplicables.
-5. Planificacion de acciones.
-6. Solicitud de aprobacion humana si aplica.
-7. Ejecucion de acciones autorizadas.
-8. Registro de evento y auditoria.
-9. Retorno de resultados con evidencia.
+### Architect Agent
 
-## Puntos de Control
+Checks architectural consistency.
 
-- **Autenticacion**: Verificacion de identidad del agente.
-- **Autorizacion**: Validacion de permisos.
-- **Especificacion**: Confirmacion de requisitos aprobados.
-- **Diseno**: Confirmacion de SDD o ADR aplicable.
-- **Validacion**: Verificacion de integridad de datos y pruebas.
-- **Aprobacion Humana**: Requerida para acciones criticas.
-- **Metricas**: Requeridas para experimentos y evaluacion de impacto.
-- **Auditoria**: Registro de todas las acciones.
+Allowed actions:
 
-## Monitoreo y Alertas
+- review design documents,
+- propose ADRs,
+- validate repository boundaries,
+- identify affected policies.
 
-El sistema monitorea:
+### Builder Agent
 
-- Ejecucion de agentes.
-- Uso de recursos.
-- Cumplimiento de politicas.
-- Cobertura de trazabilidad.
-- Eventos anomalos.
+Implements code only after requirements, feasibility, design and tasks exist.
+
+Allowed actions:
+
+- write code,
+- write tests,
+- update implementation docs,
+- produce as-built notes.
+
+### Reviewer Agent
+
+Reviews tests, security, documentation and policy compliance.
+
+Allowed actions:
+
+- review pull requests,
+- check test coverage,
+- verify security and governance compliance,
+- block changes with missing evidence.
+
+### Documentation Agent
+
+Generates README, ADR, as-built, reports and paper notes.
+
+Allowed actions:
+
+- generate documentation from traceable evidence,
+- update docs after implementation,
+- produce paper notes when evidence is complete.
+
+### Experiment Agent
+
+Runs experiments and records metrics.
+
+Allowed actions:
+
+- execute approved experiments,
+- collect metrics,
+- update experiment cards,
+- report limitations.
+
+### Crew Chief Agent
+
+Assists with race engineering recommendations but cannot execute critical changes without approval.
+
+Allowed actions:
+
+- summarize telemetry evidence,
+- generate crew chief reports,
+- classify risk,
+- request approval for setup changes.
+
+### Simulation Agent
+
+Runs what-if simulations and produces evidence for recommendations.
+
+Allowed actions:
+
+- run simulation scenarios,
+- compare against baselines,
+- calculate simulation validation score,
+- document uncertainty.
+
+## Tool Access
+
+| Agent type | Tool access |
+|---|---|
+| Root Orchestrator | MCP gateway, workflow registry, observability |
+| KDD Admin Agent | repository catalog, schemas, metrics, documentation |
+| Planner Agent | requirements, design, task templates |
+| Architect Agent | ADRs, repository catalog, dependency maps |
+| Builder Agent | implementation repository, test runner, approved MCP tools |
+| Reviewer Agent | CI/CD, security reports, docs, metrics |
+| Documentation Agent | RAG/CAG, templates, paper alignment |
+| Experiment Agent | data pipelines, experimentation lab, metrics |
+| Crew Chief Agent | telemetry, race command center, approval system |
+| Simulation Agent | digital twin lab, experiment metrics, model cards |
+
+## Approval Requirements
+
+Human approval is required for:
+
+- Kubernetes deployments,
+- production setup recommendations,
+- model updates used in operational decisions,
+- destructive data operations,
+- security policy changes,
+- repository boundary changes,
+- AutoSkill promotion,
+- paper results with incomplete reproducibility review.
+
+## Communication Rules
+
+- Agents communicate through traceable workflow artifacts.
+- Critical decisions must be recorded as approval requests.
+- Architectural decisions must be recorded as ADRs.
+- Race recommendations must be recorded as crew chief reports or setup change requests.
+- Scientific claims must be recorded as experiment cards and paper evidence.
+
+## Output Documentation
+
+Every agent output must state:
+
+1. objective,
+2. KDD stage,
+3. repository affected,
+4. evidence used,
+5. approval requirement,
+6. validation method,
+7. documentation produced.
+
+## Blocking Rules
+
+An agent must stop when:
+
+- required artifacts are missing,
+- approval is required but absent,
+- telemetry evidence is missing or contradictory,
+- repository boundaries are unclear,
+- a tool call would bypass MCP policy,
+- the requested output would remove traceability.
 
 ---
 
-*Este documento es parte de [00-kdd-governance](README.md)*
+*Part of [00-kdd-governance](README.md)*

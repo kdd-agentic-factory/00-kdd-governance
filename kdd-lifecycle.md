@@ -1,104 +1,116 @@
-# Ciclo de Vida KDD
+# KDD Lifecycle
 
-Metodologia del Knowledge-Driven Development.
+KDD is the organizational lifecycle for the KDD-governed agentic race engineering platform. It applies to data, documents, repositories, agents, sessions, models, experiments, recommendations, simulations and deployment artifacts.
 
-En este proyecto, KDD no se limita a mineria de datos tradicional. KDD es el modelo administrativo del ecosistema agentico: organiza datos, documentos, repositorios, agentes, experimentos, decisiones, despliegues y evidencia cientifica.
+## Selection
 
-## Ciclo KDD Adaptado
+Selection defines which data, documents, repositories, sessions, models, telemetry signals or experiments are admitted into the system.
 
-| Fase | Significado en este proyecto | Ejemplos de artefactos |
-|---|---|---|
-| Selection | Seleccion de datos, documentos, repositorios, sesiones, circuitos, modelos y artefactos | Dataset card, requisitos, fuentes, trazas |
-| Preprocessing | Limpieza, validacion, normalizacion, anonimizacion, control de calidad y preparacion | Validaciones, reportes QA, contratos de entrada |
-| Transformation | Conversion a esquemas, features, embeddings, contratos de datos y formatos reutilizables | Features, embeddings, schemas, data contracts |
-| Data Mining | Deteccion de patrones, clustering, anomalias, correlaciones, prediccion y simulacion | Experimentos, modelos, simulaciones, metricas |
-| Interpretation | Explicacion tecnica, recomendaciones, analisis de riesgo y evidencia | Reportes, recomendaciones, risk notes, approvals |
-| Documentation | README, ADR, requirements, design, tasks, as-built, paper notes y reportes | Plantillas obligatorias y documentacion generada |
-| Deployment | Docker, Kubernetes, CI/CD, observabilidad, seguridad y release controlado | Releases, manifests, dashboards, auditoria |
+Required artifacts:
 
-## Ejemplo: Recomendacion de Setup en `15-race-command-center`
+- `dataset-card.md`
+- source declaration
+- ownership metadata
+- quality constraints
+- intended use
 
-| Fase | Aplicacion practica |
+## Preprocessing
+
+Preprocessing prepares raw inputs.
+
+Typical operations:
+
+- timestamp normalization,
+- missing data handling,
+- signal validation,
+- document cleaning,
+- metadata extraction,
+- outlier detection.
+
+## Transformation
+
+Transformation converts preprocessed data into reusable representations.
+
+Examples:
+
+- telemetry features,
+- embeddings,
+- vector indexes,
+- schemas,
+- event contracts,
+- simulation inputs.
+
+## Data Mining
+
+Data Mining extracts patterns and models.
+
+Examples:
+
+- clustering,
+- anomaly detection,
+- tire degradation prediction,
+- setup correlation,
+- sequence mining,
+- simulation-based inference.
+
+## Interpretation
+
+Interpretation translates model outputs into engineering meaning.
+
+Examples:
+
+- setup recommendations,
+- crew chief reports,
+- risk classification,
+- evidence summaries.
+
+## Documentation
+
+Documentation generates traceable artifacts:
+
+- ADR,
+- README,
+- as-built,
+- paper notes,
+- experiment cards,
+- model cards.
+
+## Deployment
+
+Deployment controls execution:
+
+- Docker,
+- Kubernetes,
+- CI/CD,
+- observability,
+- rollback,
+- approval gates.
+
+## Specification-Driven Development Overlay
+
+Implementation work must follow:
+
+1. requirements,
+2. feasibility,
+3. design,
+4. tasks,
+5. tests,
+6. implementation,
+7. as-built,
+8. metrics and paper evidence when applicable.
+
+## Example: Race Setup Recommendation
+
+| KDD stage | Race engineering application |
 |---|---|
-| Selection | Se seleccionan vueltas, curvas, sesiones y senales relevantes |
-| Preprocessing | Se limpian outliers, timestamps, gaps y senales erroneas |
-| Transformation | Se calculan features como `spin_ratio`, `lean_angle`, `brake_phase` y `drive_efficiency` |
-| Data Mining | Se detecta patron de degradacion o perdida de traccion |
-| Interpretation | Se propone cambiar `Mapping 2` o ajustar rebote trasero |
-| Documentation | Se genera informe para el crew chief y paper-note |
-| Deployment | Se registra la accion y, si procede, se despliega como regla o modelo actualizado |
-
-## Fases del Ciclo KDD
-
-### 1. Discovery
-- Identificacion de requisitos
-- Recopilacion de conocimiento
-- Documentacion de necesidades
-
-### 2. Design
-- Diseno de soluciones
-- Arquitectura tecnica
-- Definicion de capacidades
-
-### 3. Development
-- Implementacion
-- Creacion de skills
-- Desarrollo de agentes
-
-### 4. Validation
-- Testing y validacion
-- Aprobacion humana
-- Aseguramiento de calidad
-
-### 5. Deployment
-- Despliegue a produccion
-- Monitoreo inicial
-- Documentacion as-built
-
-### 6. Operations
-- Operacion y mantenimiento
-- Monitoreo continuo
-- Mejora iterativa
-
-### 7. Retirement
-- Deprecacion
-- Migracion de datos
-- Archivado
-
-## Artefactos por Fase
-
-| Fase | Artefactos Principales |
-|------|------------------------|
-| Discovery | Requirements, Feasibility Study |
-| Design | Design Document, ADR |
-| Development | Code, Skills, Agents |
-| Validation | Test Reports, Approvals |
-| Deployment | Release Notes, As-Built |
-| Operations | Metrics, Logs, Alerts |
-| Retirement | Deprecation Notice, Archive |
-
-## Flujo Specification-Driven Development
-
-El ciclo KDD aplica Specification-Driven Development como secuencia obligatoria de control. Ningun repositorio del ecosistema puede saltar directamente a implementacion sin evidencia documental previa.
-
-| Paso | Artefacto obligatorio | Plantilla | Regla de avance |
-|---|---|---|---|
-| 1 | Requisitos funcionales y no funcionales | `templates/requirements.template.md` | Deben estar revisados antes de evaluar viabilidad |
-| 2 | Viabilidad tecnica, operativa y de datos | `templates/feasibility.template.md` | Debe identificar riesgos y decision Go/No-Go |
-| 3 | Diseno tecnico | `templates/design.template.md` | Debe cubrir arquitectura, pruebas, seguridad, despliegue y observabilidad |
-| 4 | Tareas trazables | `templates/tasks.template.md` | Cada tarea debe enlazar con requisitos y componentes de diseno |
-| 5 | Implementacion con TDD | Repositorio responsable | Las pruebas deben evidenciar el cumplimiento de requisitos |
-| 6 | Verificacion as-built | `templates/as-built.template.md` | Debe comparar diseno vs implementacion real |
-| 7 | Medicion y evidencia | `metrics/` y plantillas cientificas | Debe cerrar trazabilidad hacia resultados y paper |
-
-## Controles de Bloqueo
-
-- Sin requisitos aprobados, no se permite implementacion.
-- Sin diseno aprobado, no se permite despliegue.
-- Sin aprobacion humana, no se ejecutan recomendaciones criticas.
-- Sin metricas definidas, no se valida un experimento.
-- Sin trazabilidad completa, ningun resultado puede incorporarse al paper.
+| Selection | Select laps, corners, sessions and telemetry signals |
+| Preprocessing | Clean outliers, timestamps, gaps and invalid signals |
+| Transformation | Compute `spin_ratio`, `lean_angle`, `brake_phase` and `drive_efficiency` |
+| Data Mining | Detect degradation, traction loss or setup correlation |
+| Interpretation | Propose mapping, rebound or strategy adjustment with risk level |
+| Documentation | Generate crew chief report and paper note |
+| Deployment | Register the decision and deploy rule/model only after approval |
 
 ---
 
-*Este documento es parte de [00-kdd-governance](README.md)*
+*Part of [00-kdd-governance](README.md)*

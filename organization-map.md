@@ -1,106 +1,115 @@
-# Organigrama y Mapeo de Repositorios
+# Organization Map
 
-Estructura organizacional del ecosistema KDD.
+This file describes the complete repository organization for the KDD-governed agentic race engineering platform.
 
-`00-kdd-governance` es el repositorio raiz de gobierno. Define reglas, politicas, plantillas, metricas y decisiones que deben cumplir todos los repositorios `01` a `17`.
+## Repository Layers
 
-```text
-00-kdd-governance
-    -> define reglas para
-01-agent-orchestrator
-02-mcp-gateway
-03-rag-cag-knowledge-layer
-04-skills-autoskills-registry
-05-documentation-agent
-06-kdd-data-pipelines
-07-agentic-workflows
-08-experimentation-lab
-09-observability-platform
-10-infra-docker
-11-infra-kubernetes
-12-ci-cd-security
-13-ui-command-center
-14-paper-reproducibility-kit
-15-race-command-center
-16-race-ai-copilot
-17-digital-twin-simulation-lab
-```
+### Governance Layer
 
-## Preguntas que Gobierna
+- `00-kdd-governance`
 
-Este repositorio debe responder de forma normativa a:
+### Agentic Control Layer
 
-- Como se trabaja en la organizacion.
-- Que puede hacer un agente.
-- Que no puede hacer un agente.
-- Que necesita aprobacion humana.
-- Como se crea una feature.
-- Como se crea una skill.
-- Como se valida una AutoSkill.
-- Como se documenta una decision.
-- Como se mide la trazabilidad.
-- Como se integra cada resultado con el paper.
-- Que repositorio tiene cada responsabilidad.
-- Que significa KDD en este proyecto.
+- `01-agent-orchestrator`
+- `02-mcp-gateway`
+- `04-skills-autoskills-registry`
+- `07-agentic-workflows`
 
-## Mapa de Responsabilidades
+### Knowledge and Data Layer
 
-| Repositorio | Responsabilidad principal | Gobernado por |
-|---|---|---|
-| `00-kdd-governance` | Gobierno raiz, politicas, plantillas, ADRs, metricas, ciclo KDD y reglas agenticas | Si mismo |
-| `01-agent-orchestrator` | Orquestacion de agentes, delegacion, ejecucion coordinada y control de flujos agenticos | Politicas de agentes, permisos, aprobacion humana, trazabilidad |
-| `02-mcp-gateway` | Puerta de enlace MCP para herramientas, conectores, permisos e interfaces externas | Politicas de seguridad, permisos, auditoria, diseno |
-| `03-rag-cag-knowledge-layer` | Capa de conocimiento RAG/CAG, indexacion, recuperacion, contexto y memoria documental | Gobierno de datos, documentacion, trazabilidad de fuentes |
-| `04-skills-autoskills-registry` | Registro de skills reutilizables y validacion de AutoSkills | Politicas de skills, validacion, seguridad y reutilizacion |
-| `05-documentation-agent` | Generacion, actualizacion y verificacion de documentacion operativa y tecnica | Plantillas obligatorias, README, ADR, as-built, paper notes |
-| `06-kdd-data-pipelines` | Pipelines de datos, limpieza, transformacion, validacion y contratos de datos | Gobierno de datos, metricas, trazabilidad de datasets |
-| `07-agentic-workflows` | Workflows agenticos de negocio, investigacion y operaciones | Ciclo KDD, aprobaciones, tareas trazables |
-| `08-experimentation-lab` | Ejecucion de experimentos, evaluacion de hipotesis y comparativas | Experiment cards, metricas, reproducibilidad |
-| `09-observability-platform` | Logs, metricas, trazas, alertas, auditoria y control operacional | Metricas de gobierno, seguridad, auditoria |
-| `10-infra-docker` | Runtime local, imagenes, compose, entornos reproducibles | Politicas de despliegue local, seguridad, as-built |
-| `11-infra-kubernetes` | Runtime escalable, manifests, charts, despliegues y operaciones cluster | Politica Kubernetes, aprobacion humana, observabilidad |
-| `12-ci-cd-security` | Pipelines CI/CD, controles de calidad, escaneo y seguridad automatizada | Politicas de seguridad, repositorios, release controlado |
-| `13-ui-command-center` | UI de control, dashboards operativos y supervision humana | Politicas de aprobacion, UX operativa, trazabilidad |
-| `14-paper-reproducibility-kit` | Evidencia reproducible para paper, scripts, datasets, resultados y anexos | Plantillas cientificas, trazabilidad, metricas |
-| `15-race-command-center` | Centro de mando de carrera, analitica operativa y recomendaciones de setup/estrategia | Aprobacion humana, experimentos, trazabilidad, paper notes |
-| `16-race-ai-copilot` | Copiloto de IA para analisis, recomendaciones y asistencia al equipo | Politicas de agentes, restricciones criticas, aprobacion |
-| `17-digital-twin-simulation-lab` | Simulacion, digital twins, escenarios y evaluacion predictiva | Experimentacion, metricas, reproducibilidad |
+- `03-rag-cag-knowledge-layer`
+- `06-kdd-data-pipelines`
 
-## Roles Principales
+### Runtime Layer
 
-### Governance
-- Define politicas y decisiones estrategicas.
-- Supervisa cumplimiento normativo.
-- Mantiene plantillas, metricas y criterios de bloqueo.
+- `10-infra-docker`
+- `11-infra-kubernetes`
+- `12-ci-cd-security`
 
-### Architecture
-- Define diseno de soluciones.
-- Documenta decisiones tecnicas arquitectonicas.
-- Valida que los servicios no se desplieguen sin SDD o ADR aplicable.
+### Product Layer
 
-### Operations
-- Gestiona operacion, monitoreo y mantenimiento.
-- Ejecuta despliegues controlados.
-- Mantiene evidencia as-built y auditoria.
+- `13-ui-command-center`
+- `15-race-command-center`
+- `16-race-ai-copilot`
+- `17-digital-twin-simulation-lab`
 
-### Development
-- Implementa features, agentes y skills.
-- Trabaja desde requisitos, diseno y tareas aprobadas.
-- Mantiene pruebas, trazabilidad y documentacion.
+### Research Layer
 
-### Research
-- Define experimentos, metricas y criterios de validez.
-- Integra resultados con paper notes y reproducibility kit.
-- Rechaza resultados sin evidencia completa.
+- `08-experimentation-lab`
+- `14-paper-reproducibility-kit`
 
-## Responsabilidades Cruzadas
+## Repository Responsibilities
 
-- **Seguridad**: Todos.
-- **Documentacion**: Todos.
-- **Trazabilidad**: Todos.
-- **Calidad**: Todos.
-- **Reproducibilidad**: Todos los repositorios con impacto cientifico.
+| Repository | Purpose |
+|---|---|
+| `00-kdd-governance` | Governance, policies, ADRs, templates, metrics, schemas and repository catalog |
+| `01-agent-orchestrator` | Multi-agent orchestration and workflow coordination |
+| `02-mcp-gateway` | MCP tool connectivity and controlled external tool access |
+| `03-rag-cag-knowledge-layer` | Knowledge retrieval, cached context and source-grounded responses |
+| `04-skills-autoskills-registry` | Reusable skills, AutoSkill candidates and validation records |
+| `05-documentation-agent` | Documentation generation and traceability maintenance |
+| `06-kdd-data-pipelines` | Data ingestion, validation, preprocessing and transformation |
+| `07-agentic-workflows` | Workflow definitions for agents and governed operations |
+| `08-experimentation-lab` | Scientific validation, experiment execution and metric collection |
+| `09-observability-platform` | Metrics, logs, traces, audit events and alerting |
+| `10-infra-docker` | Local runtime and reproducible container environments |
+| `11-infra-kubernetes` | Scalable runtime and cluster deployment definitions |
+| `12-ci-cd-security` | CI/CD, quality gates, dependency scanning and release security |
+| `13-ui-command-center` | Shared UI component system and command center foundation |
+| `14-paper-reproducibility-kit` | Paper evidence, reproducibility scripts and result packaging |
+| `15-race-command-center` | Operational race dashboard and crew-chief decision support |
+| `16-race-ai-copilot` | Local Ollama copilot for race engineering assistance |
+| `17-digital-twin-simulation-lab` | Simulation, what-if validation and digital twin evidence |
+
+## Dependency Rules
+
+- Every repository depends on `00-kdd-governance`.
+- Product repositories may consume data, knowledge, workflows, observability and runtime services.
+- Research repositories may consume experiment, dataset, model and simulation evidence.
+- Infrastructure repositories must not depend on product-layer implementation details.
+- Data and knowledge repositories must not depend on UI repositories.
+- Governance must define rules, not import application code from implementation repositories.
+
+## Allowed Calls
+
+| Caller | May call |
+|---|---|
+| `01-agent-orchestrator` | `02-mcp-gateway`, `04-skills-autoskills-registry`, `07-agentic-workflows`, `09-observability-platform` |
+| `03-rag-cag-knowledge-layer` | `06-kdd-data-pipelines` |
+| `05-documentation-agent` | `03-rag-cag-knowledge-layer`, `14-paper-reproducibility-kit` |
+| `08-experimentation-lab` | `06-kdd-data-pipelines`, `17-digital-twin-simulation-lab`, `14-paper-reproducibility-kit` |
+| `13-ui-command-center` | `09-observability-platform`, product APIs |
+| `15-race-command-center` | `03-rag-cag-knowledge-layer`, `09-observability-platform`, `16-race-ai-copilot`, `17-digital-twin-simulation-lab` |
+| `16-race-ai-copilot` | `02-mcp-gateway`, `03-rag-cag-knowledge-layer`, `04-skills-autoskills-registry` |
+
+## Forbidden Knowledge
+
+- `10-infra-docker`, `11-infra-kubernetes` and `12-ci-cd-security` must not encode race engineering business rules.
+- `16-race-ai-copilot` must not bypass `15-race-command-center` for operational recommendations.
+- `17-digital-twin-simulation-lab` must not publish recommendations as operational decisions.
+- `14-paper-reproducibility-kit` must not contain untraceable results.
+- `00-kdd-governance` must not contain product implementation logic.
+
+## Implementation Order
+
+1. `00-kdd-governance`
+2. `10-infra-docker`
+3. `12-ci-cd-security`
+4. `02-mcp-gateway`
+5. `03-rag-cag-knowledge-layer`
+6. `04-skills-autoskills-registry`
+7. `01-agent-orchestrator`
+8. `06-kdd-data-pipelines`
+9. `07-agentic-workflows`
+10. `09-observability-platform`
+11. `08-experimentation-lab`
+12. `17-digital-twin-simulation-lab`
+13. `13-ui-command-center`
+14. `16-race-ai-copilot`
+15. `15-race-command-center`
+16. `14-paper-reproducibility-kit`
+17. `11-infra-kubernetes`
 
 ---
 
-*Este documento es parte de [00-kdd-governance](README.md)*
+*Part of [00-kdd-governance](README.md)*
