@@ -1,92 +1,146 @@
+organization: kdd-agentic-race-engineering
+
 repositories:
   - id: "00"
-    name: 00-kdd-governance
-    responsibility: Gobierno raiz, politicas, plantillas, ADRs, metricas y ciclo KDD
-    owner: Governance
-    maturity: active
-  - id: "01"
-    name: 01-agent-orchestrator
-    responsibility: Orquestacion de agentes
-    owner: Agentic Platform
-    maturity: planned
-  - id: "02"
-    name: 02-mcp-gateway
-    responsibility: Gateway MCP y herramientas
-    owner: Platform
-    maturity: planned
-  - id: "03"
-    name: 03-rag-cag-knowledge-layer
-    responsibility: Capa de conocimiento RAG/CAG
-    owner: Knowledge
-    maturity: planned
-  - id: "04"
-    name: 04-skills-autoskills-registry
-    responsibility: Registro de skills y AutoSkills
-    owner: Agentic Platform
-    maturity: planned
-  - id: "05"
-    name: 05-documentation-agent
-    responsibility: Agente de documentacion
-    owner: Documentation
-    maturity: planned
-  - id: "06"
-    name: 06-kdd-data-pipelines
-    responsibility: Pipelines de datos KDD
-    owner: Data
-    maturity: planned
-  - id: "07"
-    name: 07-agentic-workflows
-    responsibility: Workflows agenticos
-    owner: Operations
-    maturity: planned
-  - id: "08"
-    name: 08-experimentation-lab
-    responsibility: Laboratorio de experimentacion
-    owner: Research
-    maturity: planned
-  - id: "09"
-    name: 09-observability-platform
-    responsibility: Observabilidad, logs y auditoria
-    owner: Operations
-    maturity: planned
-  - id: "10"
-    name: 10-infra-docker
-    responsibility: Runtime local Docker
-    owner: Infrastructure
-    maturity: planned
-  - id: "11"
-    name: 11-infra-kubernetes
-    responsibility: Runtime Kubernetes
-    owner: Infrastructure
-    maturity: planned
-  - id: "12"
-    name: 12-ci-cd-security
-    responsibility: CI/CD y seguridad
-    owner: Security
-    maturity: planned
-  - id: "13"
-    name: 13-ui-command-center
-    responsibility: UI de control
-    owner: Product
-    maturity: planned
-  - id: "14"
-    name: 14-paper-reproducibility-kit
-    responsibility: Reproducibilidad del paper
-    owner: Research
-    maturity: planned
-  - id: "15"
-    name: 15-race-command-center
-    responsibility: Centro de mando de carrera
-    owner: Race Engineering
-    maturity: planned
-  - id: "16"
-    name: 16-race-ai-copilot
-    responsibility: Copiloto IA de carrera
-    owner: Race Engineering
-    maturity: planned
-  - id: "17"
-    name: 17-digital-twin-simulation-lab
-    responsibility: Simulacion y digital twin
-    owner: Simulation
-    maturity: planned
+    name: "00-kdd-governance"
+    layer: "governance"
+    purpose: "Defines KDD governance, policies, ADRs and templates."
+    owner: "architecture"
+    maturity: "foundation"
+    criticality: "critical"
 
+  - id: "01"
+    name: "01-agent-orchestrator"
+    layer: "agentic-control"
+    purpose: "Coordinates multi-agent workflows."
+    owner: "ai-platform"
+    maturity: "planned"
+    criticality: "critical"
+
+  - id: "02"
+    name: "02-mcp-gateway"
+    layer: "agentic-control"
+    purpose: "Provides MCP-mediated tool connectivity."
+    owner: "ai-platform"
+    maturity: "planned"
+    criticality: "critical"
+
+  - id: "03"
+    name: "03-rag-cag-knowledge-layer"
+    layer: "knowledge-data"
+    purpose: "Provides knowledge retrieval and cached governance context."
+    owner: "knowledge"
+    maturity: "planned"
+    criticality: "high"
+
+  - id: "04"
+    name: "04-skills-autoskills-registry"
+    layer: "agentic-control"
+    purpose: "Registers reusable skills and AutoSkill candidates."
+    owner: "ai-platform"
+    maturity: "planned"
+    criticality: "high"
+
+  - id: "05"
+    name: "05-documentation-agent"
+    layer: "agentic-control"
+    purpose: "Generates documentation, ADR drafts, as-built records and paper notes."
+    owner: "documentation"
+    maturity: "planned"
+    criticality: "medium"
+
+  - id: "06"
+    name: "06-kdd-data-pipelines"
+    layer: "knowledge-data"
+    purpose: "Manages data lifecycle, preprocessing and transformation pipelines."
+    owner: "data"
+    maturity: "planned"
+    criticality: "critical"
+
+  - id: "07"
+    name: "07-agentic-workflows"
+    layer: "agentic-control"
+    purpose: "Defines executable agentic workflows."
+    owner: "ai-platform"
+    maturity: "planned"
+    criticality: "high"
+
+  - id: "08"
+    name: "08-experimentation-lab"
+    layer: "research"
+    purpose: "Runs scientific validation and experiment evaluation."
+    owner: "research"
+    maturity: "planned"
+    criticality: "high"
+
+  - id: "09"
+    name: "09-observability-platform"
+    layer: "runtime"
+    purpose: "Collects metrics, logs, traces and audit events."
+    owner: "platform"
+    maturity: "planned"
+    criticality: "high"
+
+  - id: "10"
+    name: "10-infra-docker"
+    layer: "runtime"
+    purpose: "Provides local Docker runtime and reproducible environments."
+    owner: "platform"
+    maturity: "planned"
+    criticality: "high"
+
+  - id: "11"
+    name: "11-infra-kubernetes"
+    layer: "runtime"
+    purpose: "Provides scalable Kubernetes runtime."
+    owner: "platform"
+    maturity: "planned"
+    criticality: "critical"
+
+  - id: "12"
+    name: "12-ci-cd-security"
+    layer: "runtime"
+    purpose: "Defines CI/CD, quality gates and security automation."
+    owner: "security"
+    maturity: "planned"
+    criticality: "critical"
+
+  - id: "13"
+    name: "13-ui-command-center"
+    layer: "product"
+    purpose: "Provides shared UI component system and command center foundation."
+    owner: "product"
+    maturity: "planned"
+    criticality: "high"
+
+  - id: "14"
+    name: "14-paper-reproducibility-kit"
+    layer: "research"
+    purpose: "Stores paper evidence, reproducibility scripts and result packages."
+    owner: "research"
+    maturity: "planned"
+    criticality: "critical"
+
+  - id: "15"
+    name: "15-race-command-center"
+    layer: "product"
+    purpose: "Operational dashboard for race engineering."
+    owner: "race-engineering"
+    maturity: "planned"
+    criticality: "critical"
+
+  - id: "16"
+    name: "16-race-ai-copilot"
+    layer: "product-ai"
+    purpose: "Local Ollama-based conversational AI copilot."
+    owner: "ai-platform"
+    maturity: "planned"
+    criticality: "high"
+
+  - id: "17"
+    name: "17-digital-twin-simulation-lab"
+    layer: "simulation"
+    purpose: "Digital twin simulation and what-if validation."
+    owner: "simulation"
+    maturity: "planned"
+    criticality: "high"

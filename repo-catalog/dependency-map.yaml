@@ -1,19 +1,27 @@
 dependencies:
-  "01-agent-orchestrator": ["00-kdd-governance", "02-mcp-gateway", "04-skills-autoskills-registry"]
-  "02-mcp-gateway": ["00-kdd-governance"]
-  "03-rag-cag-knowledge-layer": ["00-kdd-governance", "06-kdd-data-pipelines"]
-  "04-skills-autoskills-registry": ["00-kdd-governance"]
-  "05-documentation-agent": ["00-kdd-governance", "03-rag-cag-knowledge-layer"]
-  "06-kdd-data-pipelines": ["00-kdd-governance"]
-  "07-agentic-workflows": ["00-kdd-governance", "01-agent-orchestrator"]
-  "08-experimentation-lab": ["00-kdd-governance", "06-kdd-data-pipelines"]
-  "09-observability-platform": ["00-kdd-governance"]
-  "10-infra-docker": ["00-kdd-governance"]
-  "11-infra-kubernetes": ["00-kdd-governance", "10-infra-docker"]
-  "12-ci-cd-security": ["00-kdd-governance"]
-  "13-ui-command-center": ["00-kdd-governance", "09-observability-platform"]
-  "14-paper-reproducibility-kit": ["00-kdd-governance", "08-experimentation-lab"]
-  "15-race-command-center": ["00-kdd-governance", "13-ui-command-center", "16-race-ai-copilot"]
-  "16-race-ai-copilot": ["00-kdd-governance", "03-rag-cag-knowledge-layer"]
-  "17-digital-twin-simulation-lab": ["00-kdd-governance", "08-experimentation-lab"]
+  01-agent-orchestrator:
+    depends_on:
+      - 00-kdd-governance
+      - 02-mcp-gateway
+      - 03-rag-cag-knowledge-layer
+      - 04-skills-autoskills-registry
 
+  15-race-command-center:
+    depends_on:
+      - 01-agent-orchestrator
+      - 02-mcp-gateway
+      - 06-kdd-data-pipelines
+      - 13-ui-command-center
+
+  16-race-ai-copilot:
+    depends_on:
+      - 01-agent-orchestrator
+      - 02-mcp-gateway
+      - 03-rag-cag-knowledge-layer
+      - 15-race-command-center
+
+  17-digital-twin-simulation-lab:
+    depends_on:
+      - 06-kdd-data-pipelines
+      - 15-race-command-center
+      - 16-race-ai-copilot

@@ -1,22 +1,35 @@
 type: object
 required:
-  - id
-  - title
-  - artifact_type
-  - status
+  - artifact_id
+  - name
+  - kdd_stage
   - owner
-  - traceability
+  - source
+  - created_at
 properties:
-  id:
+  artifact_id:
     type: string
-  title:
+  name:
     type: string
-  artifact_type:
+  kdd_stage:
     type: string
-  status:
-    enum: [draft, review, approved, implemented, retired]
+    enum:
+      - selection
+      - preprocessing
+      - transformation
+      - data_mining
+      - interpretation
+      - documentation
+      - deployment
   owner:
     type: string
-  traceability:
-    type: object
-
+  source:
+    type: string
+  related_repository:
+    type: string
+  evidence:
+    type: array
+    items:
+      type: string
+  approval_required:
+    type: boolean

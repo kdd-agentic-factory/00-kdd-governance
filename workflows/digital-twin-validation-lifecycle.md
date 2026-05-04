@@ -1,11 +1,22 @@
 # Digital Twin Validation Lifecycle
 
-## Pasos
+These are governance process rules, not executable workflows.
 
-1. Definir escenario.
-2. Registrar datos, parametros y version de modelo.
-3. Ejecutar simulacion.
-4. Comparar contra baseline o datos reales.
-5. Calcular `simulation-validation-score`.
-6. Documentar evidencia y limitaciones.
+```text
+Hypothesis
+-> Scenario Definition
+-> Simulation
+-> Metrics
+-> Comparison with Baseline
+-> Risk Assessment
+-> Recommendation
+-> Human Approval
+```
 
+## Required Controls
+
+- Hypothesis must be explicit before simulation.
+- Scenario definition must include parameters, data sources and model version.
+- Metrics must be declared before evaluation.
+- Baseline comparison is required before recommendation.
+- Human approval is required before operational execution.

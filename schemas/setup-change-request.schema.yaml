@@ -1,27 +1,35 @@
 type: object
 required:
   - request_id
-  - session
-  - parameter
-  - current_value
-  - proposed_value
+  - session_id
+  - change_type
+  - risk_level
   - evidence
-  - approval
+  - approval_required
 properties:
   request_id:
     type: string
-  session:
+  session_id:
     type: string
-  parameter:
+  change_type:
     type: string
-  current_value:
+    enum:
+      - chassis
+      - suspension
+      - braking
+      - electronics
+      - tires
+      - aero_parts
+  risk_level:
     type: string
-  proposed_value:
-    type: string
+    enum:
+      - low
+      - medium
+      - high
+      - critical
   evidence:
     type: array
     items:
       type: string
-  approval:
-    type: object
-
+  approval_required:
+    type: boolean

@@ -1,23 +1,25 @@
 # SDD Feature Lifecycle
 
-## Entradas
+These are governance process rules, not executable workflows.
 
-- Requisito aprobado.
-- Viabilidad revisada.
-- Diseno o ADR.
+```text
+Request
+-> Requirements
+-> Feasibility
+-> Design
+-> Tasks
+-> Tests
+-> Implementation
+-> Review
+-> As-built
+-> Documentation
+-> Optional ADR
+```
 
-## Pasos
+## Required Controls
 
-1. Crear tareas trazables.
-2. Definir pruebas esperadas.
-3. Implementar con TDD.
-4. Ejecutar validaciones.
-5. Documentar as-built.
-6. Actualizar metricas.
-
-## Salidas
-
-- Feature implementada.
-- Pruebas y evidencia.
-- Trazabilidad completa.
-
+- Requirements must exist before feasibility.
+- Design must exist before implementation.
+- Tests must be defined before or alongside implementation.
+- As-built must close the gap between design and implementation.
+- ADR is required when architecture or repository boundaries change.

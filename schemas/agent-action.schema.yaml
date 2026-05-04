@@ -2,23 +2,29 @@ type: object
 required:
   - action_id
   - agent_id
+  - repository
   - action_type
-  - risk_level
-  - evidence
-  - timestamp
+  - approval_required
 properties:
   action_id:
     type: string
   agent_id:
     type: string
+  repository:
+    type: string
   action_type:
     type: string
-  risk_level:
-    enum: [low, medium, high, critical]
-  evidence:
+  mcp_tools:
     type: array
     items:
       type: string
-  timestamp:
-    type: string
-
+  skills:
+    type: array
+    items:
+      type: string
+  approval_required:
+    type: boolean
+  policy_checks:
+    type: array
+    items:
+      type: string
