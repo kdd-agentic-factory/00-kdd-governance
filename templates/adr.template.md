@@ -1,61 +1,33 @@
-# Plantilla: Architecture Decision Record (ADR)
+# ADR-XXXX — Title
 
-## Estado
-[Proposed | Accepted | Deprecated | Superseded]
+## Status
 
-## Contexto
-[Describe el contexto y el problema que motiva esta decisión]
+Accepted | Proposed | Deprecated
 
-## Decisión
-[Describe la decisión arquitectónica que fue tomada]
+## Context
 
-## Justificación
-[Explica por qué esta decisión es la correcta]
+What problem or decision is being addressed?
 
-## Consecuencias
-[Describe las consecuencias positivas y negativas de esta decisión]
+## Decision
 
-## Alternativas Consideradas
-[Lista las alternativas que fueron consideradas pero no seleccionadas]
+What decision has been made?
 
-### Alternativa 1: [Nombre]
-- **Pros**: [Ventajas]
-- **Contras**: [Desventajas]
-- **Por qué no**: [Razón de rechazo]
+## Consequences
 
-### Alternativa 2: [Nombre]
-- **Pros**: [Ventajas]
-- **Contras**: [Desventajas]
-- **Por qué no**: [Razón de rechazo]
+Positive and negative consequences.
 
-## Impacto en Otros Componentes
+## Alternatives Considered
 
-- [Componente 1]: [Impacto]
-- [Componente 2]: [Impacto]
+Options rejected and why.
 
-## Métricas de Éxito
+## Related Repositories
 
-- [Métrica 1]: [Target]
-- [Métrica 2]: [Target]
+Affected repositories.
 
-## Proceso de Revisión
+## Paper Alignment
 
-- **Fecha Propuesta**: [Fecha]
-- **Fecha de Decisión**: [Fecha]
-- **Próxima Revisión**: [Fecha]
-- **Personas Clave**: [Nombres]
-
-## Referencias
-
-- [Referencia 1]
-- [Referencia 2]
-
-## Historial de Cambios
-
-| Versión | Fecha | Autor | Cambio |
-|---|---|---|---|
-| 1.0 | | | Initial |
+How this decision supports the academic contribution.
 
 ---
 
-*Plantilla de [00-kdd-governance](../README.md)*
+*Template from [00-kdd-governance](../README.md)*
