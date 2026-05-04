@@ -1,0 +1,11 @@
+flowchart TD
+  Trigger[Trigger] --> Context[Evaluate Context]
+  Context --> Policies[Check Policies and AGENTS.md]
+  Policies --> Spec{Specification exists?}
+  Spec -- No --> Stop[Stop and request specification]
+  Spec -- Yes --> Risk{Critical action?}
+  Risk -- Yes --> Approval[Human Approval]
+  Risk -- No --> Execute[Execute]
+  Approval --> Execute
+  Execute --> Audit[Audit and Evidence]
+

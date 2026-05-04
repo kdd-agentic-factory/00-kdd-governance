@@ -1,0 +1,21 @@
+type: object
+required:
+  - name
+  - purpose
+  - owner
+  - governed_by
+  - maturity
+properties:
+  name:
+    type: string
+  purpose:
+    type: string
+  owner:
+    type: string
+  governed_by:
+    type: array
+    items:
+      type: string
+  maturity:
+    enum: [planned, bootstrap, active, mature, retired]
+

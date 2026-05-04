@@ -1,0 +1,21 @@
+type: object
+required:
+  - model_id
+  - version
+  - intended_use
+  - metrics
+  - limitations
+properties:
+  model_id:
+    type: string
+  version:
+    type: string
+  intended_use:
+    type: string
+  metrics:
+    type: object
+  limitations:
+    type: array
+    items:
+      type: string
+

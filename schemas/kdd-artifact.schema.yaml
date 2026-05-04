@@ -1,0 +1,22 @@
+type: object
+required:
+  - id
+  - title
+  - artifact_type
+  - status
+  - owner
+  - traceability
+properties:
+  id:
+    type: string
+  title:
+    type: string
+  artifact_type:
+    type: string
+  status:
+    enum: [draft, review, approved, implemented, retired]
+  owner:
+    type: string
+  traceability:
+    type: object
+

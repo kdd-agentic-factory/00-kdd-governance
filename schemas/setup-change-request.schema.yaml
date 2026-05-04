@@ -1,0 +1,27 @@
+type: object
+required:
+  - request_id
+  - session
+  - parameter
+  - current_value
+  - proposed_value
+  - evidence
+  - approval
+properties:
+  request_id:
+    type: string
+  session:
+    type: string
+  parameter:
+    type: string
+  current_value:
+    type: string
+  proposed_value:
+    type: string
+  evidence:
+    type: array
+    items:
+      type: string
+  approval:
+    type: object
+

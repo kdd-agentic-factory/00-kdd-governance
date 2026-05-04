@@ -1,0 +1,12 @@
+flowchart TD
+  G[00 Governance]
+  G --> A[01 Orchestrator]
+  G --> MCP[02 MCP Gateway]
+  G --> RAG[03 RAG/CAG]
+  G --> DATA[06 Data Pipelines]
+  A --> SK[04 Skills Registry]
+  RAG --> DATA
+  EXP[08 Experimentation Lab] --> PAPER[14 Reproducibility Kit]
+  RCC[15 Race Command Center] --> COP[16 Race AI Copilot]
+  DT[17 Digital Twin] --> EXP
+

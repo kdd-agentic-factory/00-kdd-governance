@@ -40,6 +40,12 @@ El flujo obligatorio pasa por:
 | Control agentico | `agentic-operating-model.md`, `policies/agent-permission-policy.md`, `policies/human-approval-policy.md` |
 | Evidencia cientifica | `templates/experiment-card.template.md`, `templates/dataset-card.template.md`, `templates/paper-section.template.md` |
 | Metricas | `metrics/kdd-traceability-score.md`, `metrics/documentation-completeness-score.md`, `metrics/agentic-factor-of-safety.md`, `metrics/skill-reuse-ratio.md` |
+| Schemas | `schemas/` |
+| Workflows | `workflows/` |
+| Catalogo | `repo-catalog/` |
+| Paper | `paper-alignment/` |
+| Diagramas | `diagrams/` |
+| Automatizacion | `scripts/`, `.github/` |
 
 ## Regla para repositorios `01` a `17`
 
@@ -70,7 +76,15 @@ La matriz completa de responsabilidades vive en [organization-map.md](organizati
 - [Modelo Operativo Agentico](agentic-operating-model.md)
 - [Organigrama y Mapeo de Roles](organization-map.md)
 - [Registro de Agentes](AGENTS.md)
+- [Estandares de Repositorio](repository-standards.md)
+- [Guia de Contribucion](contribution-guide.md)
+- [Glosario](glossary.md)
 - [Politicas](policies/)
 - [Plantillas](templates/)
 - [Metricas](metrics/)
+- [Schemas](schemas/)
+- [Workflows](workflows/)
+- [Catalogo de Repositorios](repo-catalog/)
+- [Alineacion con Paper](paper-alignment/)
+- [Diagramas](diagrams/)
 - [Decisiones Arquitectonicas](adr/)

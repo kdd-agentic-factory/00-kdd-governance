@@ -1,0 +1,11 @@
+flowchart LR
+  T[Telemetry] --> P[Preprocessing]
+  P --> F[Feature Engineering]
+  F --> M[Pattern Detection]
+  M --> I[Interpretation]
+  I --> A{Human Approval}
+  A -- Approved --> C[Setup Change]
+  A -- Rejected --> L[Learning Log]
+  C --> O[Observed Outcome]
+  O --> T
+

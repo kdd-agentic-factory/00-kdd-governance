@@ -1,0 +1,21 @@
+type: object
+required:
+  - experiment_id
+  - hypothesis
+  - metrics
+  - dataset
+  - status
+properties:
+  experiment_id:
+    type: string
+  hypothesis:
+    type: string
+  metrics:
+    type: array
+    items:
+      type: string
+  dataset:
+    type: string
+  status:
+    enum: [planning, in_progress, completed, published]
+

@@ -1,0 +1,21 @@
+type: object
+required:
+  - skill_id
+  - version
+  - capability
+  - permissions
+  - validation
+properties:
+  skill_id:
+    type: string
+  version:
+    type: string
+  capability:
+    type: string
+  permissions:
+    type: array
+    items:
+      type: string
+  validation:
+    type: object
+

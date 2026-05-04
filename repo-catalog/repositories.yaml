@@ -1,0 +1,92 @@
+repositories:
+  - id: "00"
+    name: 00-kdd-governance
+    responsibility: Gobierno raiz, politicas, plantillas, ADRs, metricas y ciclo KDD
+    owner: Governance
+    maturity: active
+  - id: "01"
+    name: 01-agent-orchestrator
+    responsibility: Orquestacion de agentes
+    owner: Agentic Platform
+    maturity: planned
+  - id: "02"
+    name: 02-mcp-gateway
+    responsibility: Gateway MCP y herramientas
+    owner: Platform
+    maturity: planned
+  - id: "03"
+    name: 03-rag-cag-knowledge-layer
+    responsibility: Capa de conocimiento RAG/CAG
+    owner: Knowledge
+    maturity: planned
+  - id: "04"
+    name: 04-skills-autoskills-registry
+    responsibility: Registro de skills y AutoSkills
+    owner: Agentic Platform
+    maturity: planned
+  - id: "05"
+    name: 05-documentation-agent
+    responsibility: Agente de documentacion
+    owner: Documentation
+    maturity: planned
+  - id: "06"
+    name: 06-kdd-data-pipelines
+    responsibility: Pipelines de datos KDD
+    owner: Data
+    maturity: planned
+  - id: "07"
+    name: 07-agentic-workflows
+    responsibility: Workflows agenticos
+    owner: Operations
+    maturity: planned
+  - id: "08"
+    name: 08-experimentation-lab
+    responsibility: Laboratorio de experimentacion
+    owner: Research
+    maturity: planned
+  - id: "09"
+    name: 09-observability-platform
+    responsibility: Observabilidad, logs y auditoria
+    owner: Operations
+    maturity: planned
+  - id: "10"
+    name: 10-infra-docker
+    responsibility: Runtime local Docker
+    owner: Infrastructure
+    maturity: planned
+  - id: "11"
+    name: 11-infra-kubernetes
+    responsibility: Runtime Kubernetes
+    owner: Infrastructure
+    maturity: planned
+  - id: "12"
+    name: 12-ci-cd-security
+    responsibility: CI/CD y seguridad
+    owner: Security
+    maturity: planned
+  - id: "13"
+    name: 13-ui-command-center
+    responsibility: UI de control
+    owner: Product
+    maturity: planned
+  - id: "14"
+    name: 14-paper-reproducibility-kit
+    responsibility: Reproducibilidad del paper
+    owner: Research
+    maturity: planned
+  - id: "15"
+    name: 15-race-command-center
+    responsibility: Centro de mando de carrera
+    owner: Race Engineering
+    maturity: planned
+  - id: "16"
+    name: 16-race-ai-copilot
+    responsibility: Copiloto IA de carrera
+    owner: Race Engineering
+    maturity: planned
+  - id: "17"
+    name: 17-digital-twin-simulation-lab
+    responsibility: Simulacion y digital twin
+    owner: Simulation
+    maturity: planned
+

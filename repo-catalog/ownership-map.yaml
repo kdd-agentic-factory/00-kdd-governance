@@ -1,0 +1,28 @@
+owners:
+  Governance:
+    repositories: ["00-kdd-governance"]
+  Agentic Platform:
+    repositories: ["01-agent-orchestrator", "04-skills-autoskills-registry"]
+  Platform:
+    repositories: ["02-mcp-gateway"]
+  Knowledge:
+    repositories: ["03-rag-cag-knowledge-layer"]
+  Documentation:
+    repositories: ["05-documentation-agent"]
+  Data:
+    repositories: ["06-kdd-data-pipelines"]
+  Operations:
+    repositories: ["07-agentic-workflows", "09-observability-platform"]
+  Research:
+    repositories: ["08-experimentation-lab", "14-paper-reproducibility-kit"]
+  Infrastructure:
+    repositories: ["10-infra-docker", "11-infra-kubernetes"]
+  Security:
+    repositories: ["12-ci-cd-security"]
+  Product:
+    repositories: ["13-ui-command-center"]
+  Race Engineering:
+    repositories: ["15-race-command-center", "16-race-ai-copilot"]
+  Simulation:
+    repositories: ["17-digital-twin-simulation-lab"]
+

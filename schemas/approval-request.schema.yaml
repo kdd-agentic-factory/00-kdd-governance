@@ -1,0 +1,21 @@
+type: object
+required:
+  - request_id
+  - requested_by
+  - risk_level
+  - decision
+  - evidence
+properties:
+  request_id:
+    type: string
+  requested_by:
+    type: string
+  risk_level:
+    enum: [minor, major, critical]
+  decision:
+    enum: [pending, approved, rejected, deferred]
+  evidence:
+    type: array
+    items:
+      type: string
+

@@ -1,0 +1,27 @@
+maturity_levels:
+  planned: Definido pero no implementado
+  bootstrap: Estructura inicial creada
+  active: En uso con trazabilidad basica
+  mature: En uso con metricas y automatizacion
+  retired: Archivado
+
+repositories:
+  "00-kdd-governance": active
+  "01-agent-orchestrator": planned
+  "02-mcp-gateway": planned
+  "03-rag-cag-knowledge-layer": planned
+  "04-skills-autoskills-registry": planned
+  "05-documentation-agent": planned
+  "06-kdd-data-pipelines": planned
+  "07-agentic-workflows": planned
+  "08-experimentation-lab": planned
+  "09-observability-platform": planned
+  "10-infra-docker": planned
+  "11-infra-kubernetes": planned
+  "12-ci-cd-security": planned
+  "13-ui-command-center": planned
+  "14-paper-reproducibility-kit": planned
+  "15-race-command-center": planned
+  "16-race-ai-copilot": planned
+  "17-digital-twin-simulation-lab": planned
+

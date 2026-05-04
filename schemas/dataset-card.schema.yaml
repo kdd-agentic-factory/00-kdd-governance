@@ -1,0 +1,23 @@
+type: object
+required:
+  - dataset_id
+  - source
+  - owner
+  - quality_checks
+  - permitted_use
+properties:
+  dataset_id:
+    type: string
+  source:
+    type: string
+  owner:
+    type: string
+  quality_checks:
+    type: array
+    items:
+      type: string
+  permitted_use:
+    type: array
+    items:
+      type: string
+
