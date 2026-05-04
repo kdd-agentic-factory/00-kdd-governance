@@ -1,38 +1,47 @@
 # Plantilla: Experiment Card
 
-## Información General
+## Informacion General
 
 - **Nombre del Experimento**: [Nombre descriptivo]
-- **Versión**: 1.0
+- **Version**: 1.0
 - **Fecha**: [Fecha]
 - **Investigador Principal**: [Nombre]
 - **Estado**: [Planning | In Progress | Completed | Published]
 
 ## Objetivo del Experimento
 
-[Descripción clara del objetivo]
+[Descripcion clara del objetivo]
 
-## Hipótesis
+## Trazabilidad KDD
 
-[Enunciar la hipótesis que será probada]
+- **Requisito origen**: [RF/RNF/ID y ruta]
+- **Diseno o ADR asociado**: [Ruta]
+- **Dataset card**: [Ruta]
+- **Codigo o pipeline ejecutado**: [Repositorio, commit, workflow]
+- **Metricas predefinidas**: [Lista de metricas]
+- **Aprobacion requerida**: [Ninguna | Menor | Mayor | Critica]
 
-## Metodología
+## Hipotesis
 
-### Diseño del Experimento
-[Descripción del diseño]
+[Enunciar la hipotesis que sera probada]
+
+## Metodologia
+
+### Diseno del Experimento
+[Descripcion del diseno]
 
 ### Variables Independientes
 - [Variable 1]: [Valores a probar]
 - [Variable 2]: [Valores a probar]
 
 ### Variables Dependientes
-- [Variable 1]: [Métrica de medición]
-- [Variable 2]: [Métrica de medición]
+- [Variable 1]: [Metrica de medicion]
+- [Variable 2]: [Metrica de medicion]
 
-### Tamaño de la Muestra
-[Justificación del tamaño de muestra]
+### Tamano de la Muestra
+[Justificacion del tamano de muestra]
 
-### Período del Experimento
+### Periodo del Experimento
 - **Inicio Planeado**: [Fecha]
 - **Fin Planeado**: [Fecha]
 - **Inicio Real**: [Fecha]
@@ -40,31 +49,31 @@
 
 ## Datos Recopilados
 
-### Métrica 1: [Nombre]
+### Metrica 1: [Nombre]
 - **Valor Inicial**: [Valor]
 - **Valor Final**: [Valor]
-- **Variación**: [Variación]
+- **Variacion**: [Variacion]
 - **Significancia**: [p-value o equivalente]
 
-### Métrica 2: [Nombre]
+### Metrica 2: [Nombre]
 - **Valor Inicial**: [Valor]
 - **Valor Final**: [Valor]
-- **Variación**: [Variación]
+- **Variacion**: [Variacion]
 - **Significancia**: [p-value o equivalente]
 
-## Análisis de Resultados
+## Analisis de Resultados
 
-[Análisis detallado de los resultados]
+[Analisis detallado de los resultados]
 
-### Gráficos y Visualizaciones
-[Incluir gráficos relevantes]
+### Graficos y Visualizaciones
+[Incluir graficos relevantes]
 
 ## Conclusiones
 
 [Conclusiones basadas en los resultados]
 
-### ¿Se probó la hipótesis?
-[Sí | Parcialmente | No]
+### Se probo la hipotesis?
+[Si | Parcialmente | No]
 
 ### Hallazgos Principales
 - [Hallazgo 1]
@@ -72,8 +81,8 @@
 
 ## Limitaciones del Experimento
 
-- [Limitación 1]
-- [Limitación 2]
+- [Limitacion 1]
+- [Limitacion 2]
 
 ## Recomendaciones
 
@@ -81,13 +90,13 @@
 
 ## Impacto en Operaciones
 
-[Cómo este experimento afectará las operaciones futuras]
+[Como este experimento afectara las operaciones futuras]
 
-## Próximos Pasos
+## Proximos Pasos
 
 - [ ] Publicar resultados
 - [ ] Implementar cambios
-- [ ] Diseñar seguimiento
+- [ ] Disenar seguimiento
 
 ---
 

@@ -1,55 +1,72 @@
-# Plantilla: Descomposición de Tareas
+# Plantilla: Descomposicion de Tareas
 
-## Información General
+## Informacion General
 
 - **Proyecto**: [Nombre del proyecto]
-- **Versión**: 1.0
+- **Version**: 1.0
 - **Fecha**: [Fecha]
 - **Responsable**: [Nombre]
 - **Estado**: [Planning | In Progress | Completed]
 
 ## Resumen del Proyecto
 
-[Descripción breve del proyecto]
+[Descripcion breve del proyecto]
 
 ## Objetivos
 
 - [Objetivo 1]
 - [Objetivo 2]
 
+## Trazabilidad Obligatoria
+
+- **Documento de requisitos**: [Ruta o URL]
+- **Estudio de viabilidad**: [Ruta o URL]
+- **Documento de diseno / ADR**: [Ruta o URL]
+- **Metricas asociadas**: [Rutas o nombres]
+- **Aprobaciones requeridas**: [Ninguna | Menor | Mayor | Critica]
+
 ## Tareas Principales
 
 ### Epic 1: [Nombre]
 
 #### Task 1.1: [Nombre]
-- **Descripción**: [Descripción detallada]
-- **Estimación**: [Horas o Story Points]
+- **Descripcion**: [Descripcion detallada]
+- **Requisito vinculado**: [RF/RNF/ID]
+- **Componente de diseno**: [Componente o seccion]
+- **Prueba esperada**: [Test unitario/integracion/e2e]
+- **Estimacion**: [Horas o Story Points]
 - **Dependencias**: [Tareas que debe completar primero]
 - **Responsable**: [Nombre]
 - **Estado**: [Not Started | In Progress | Completed]
-- **Criterios de Aceptación**:
+- **Criterios de Aceptacion**:
   - [ ] Criterio 1
   - [ ] Criterio 2
 
 #### Task 1.2: [Nombre]
-- **Descripción**: [Descripción detallada]
-- **Estimación**: [Horas o Story Points]
+- **Descripcion**: [Descripcion detallada]
+- **Requisito vinculado**: [RF/RNF/ID]
+- **Componente de diseno**: [Componente o seccion]
+- **Prueba esperada**: [Test unitario/integracion/e2e]
+- **Estimacion**: [Horas o Story Points]
 - **Dependencias**: [Tareas que debe completar primero]
 - **Responsable**: [Nombre]
 - **Estado**: [Not Started | In Progress | Completed]
-- **Criterios de Aceptación**:
+- **Criterios de Aceptacion**:
   - [ ] Criterio 1
   - [ ] Criterio 2
 
 ### Epic 2: [Nombre]
 
 #### Task 2.1: [Nombre]
-- **Descripción**: [Descripción detallada]
-- **Estimación**: [Horas o Story Points]
+- **Descripcion**: [Descripcion detallada]
+- **Requisito vinculado**: [RF/RNF/ID]
+- **Componente de diseno**: [Componente o seccion]
+- **Prueba esperada**: [Test unitario/integracion/e2e]
+- **Estimacion**: [Horas o Story Points]
 - **Dependencias**: [Tareas que debe completar primero]
 - **Responsable**: [Nombre]
 - **Estado**: [Not Started | In Progress | Completed]
-- **Criterios de Aceptación**:
+- **Criterios de Aceptacion**:
   - [ ] Criterio 1
   - [ ] Criterio 2
 
@@ -68,7 +85,7 @@
 
 ## Cambios Registrados
 
-| Fecha | Cambio | Razón | Impacto |
+| Fecha | Cambio | Razon | Impacto |
 |---|---|---|---|
 | | | | |
 

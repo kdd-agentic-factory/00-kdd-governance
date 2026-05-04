@@ -1,57 +1,66 @@
-# Plantilla: Sección de Artículo Académico
+# Plantilla: Seccion de Articulo Academico
 
-## Título de la Sección
+## Titulo de la Seccion
 
-[Título claro y descriptivo]
+[Titulo claro y descriptivo]
 
-## Introducción
+## Introduccion
 
-[Contexto e importancia del tema. Motiva por qué esta sección es relevante.]
+[Contexto e importancia del tema. Motiva por que esta seccion es relevante.]
+
+## Trazabilidad de Evidencia
+
+- **Experimento fuente**: [Experiment card]
+- **Dataset fuente**: [Dataset card]
+- **Version de codigo**: [Repositorio y commit]
+- **Metricas reportadas**: [Metricas]
+- **As-built relacionado**: [Ruta]
+- **Estado de auditoria**: [Completa | Parcial | Pendiente]
 
 ## Trabajo Relacionado
 
-[Revisión de trabajos previos relacionados. Cite fuentes relevantes.]
+[Revision de trabajos previos relacionados. Cite fuentes relevantes.]
 
 - [Referencia 1]: [Resumen]
 - [Referencia 2]: [Resumen]
 
-## Metodología
+## Metodologia
 
-[Descripción detallada del enfoque, métodos y técnicas utilizadas.]
+[Descripcion detallada del enfoque, metodos y tecnicas utilizadas.]
 
 ### Datos
-[Descripción de los datos utilizados]
+[Descripcion de los datos utilizados]
 
 ### Procedimiento
 [Pasos del procedimiento experimentado]
 
-### Herramientas y Tecnologías
+### Herramientas y Tecnologias
 [Herramientas utilizadas]
 
 ## Resultados
 
-[Presentación de los resultados obtenidos. Use figuras y tablas.]
+[Presentacion de los resultados obtenidos. Use figuras y tablas.]
 
 ### Resultado 1: [Nombre]
-[Descripción y análisis del resultado]
+[Descripcion y analisis del resultado]
 
-**Tabla 1**: [Descripción de tabla]
+**Tabla 1**: [Descripcion de tabla]
 
 | | |  |
 |---|---|---|
 | | | |
 
 ### Resultado 2: [Nombre]
-[Descripción y análisis del resultado]
+[Descripcion y analisis del resultado]
 
-**Figura 1**: [Descripción de figura]
+**Figura 1**: [Descripcion de figura]
 
-## Discusión
+## Discusion
 
-[Interpretación de los resultados. Compare con trabajo relacionado.]
+[Interpretacion de los resultados. Compare con trabajo relacionado.]
 
 ### Implicaciones
-[Qué significan estos resultados]
+[Que significan estos resultados]
 
 ### Limitaciones
 [Limitaciones del estudio]
@@ -65,15 +74,15 @@
 
 ## Referencias
 
-[Lista de referencias citadas en formato académico]
+[Lista de referencias citadas en formato academico]
 
-```
+```text
 [1] Author, A., & Author, B. (2023). Title of work. Journal Name, 10(2), 123-145.
 ```
 
 ## Notas de Autor
 
-[Información de afiliación, financiamiento, conflictos de interés, etc.]
+[Informacion de afiliacion, financiamiento, conflictos de interes, etc.]
 
 ---
 
