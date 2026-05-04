@@ -1,122 +1,67 @@
 # Documentation Completeness Score
 
-## Propósito
-Medir el grado de documentación en el sistema KDD.
+## Function
 
-## Definición
-La Puntuación de Completitud de Documentación mide qué porcentaje de artefactos del ciclo KDD tienen documentación según los templates estándar.
+Measures how many mandatory documentation artifacts are present.
 
-## Cálculo
+This metric evaluates whether a feature, repository, experiment or recommendation has the required documentation expected by the KDD governance model.
 
-$$
-\text{Doc Completeness} = \frac{\sum \text{(Secciones Documentadas por Artefacto)}}{\sum \text{(Secciones Esperadas por Artefacto)}} \times 100\%
-$$
+## Formula
 
-## Artefactos Documentables
+```text
+Documentation Completeness Score =
+mandatory artifacts present
+/
+mandatory artifacts expected
+```
 
-### Por Fase del Ciclo KDD
+Percentage form:
 
-#### Discovery
-- [ ] Requirements Document
-- [ ] Feasibility Study
+```text
+DCS = mandatory_artifacts_present / mandatory_artifacts_expected * 100
+```
 
-#### Design
-- [ ] Software Design Document
-- [ ] Architecture Decision Records
+## Mandatory Artifact Examples
 
-#### Development
-- [ ] Task Decomposition
-- [ ] Code Comments
-- [ ] Inline Documentation
+For a feature:
 
-#### Deployment
-- [ ] As-Built Document
-- [ ] Deployment Guide
-- [ ] Operations Manual
+- requirements,
+- feasibility,
+- design,
+- tasks,
+- tests,
+- as-built,
+- ADR when architecture changes.
 
-#### Operations
-- [ ] Runbooks
-- [ ] Troubleshooting Guide
-- [ ] Metrics and Alerts
+For an experiment:
 
-### Por Tipo de Artefacto
+- experiment card,
+- dataset card,
+- model card when a model is used,
+- metrics,
+- paper section or paper note when results are reported.
 
-#### Repositorio
-- [ ] README.md
-- [ ] GOVERNANCE.md
-- [ ] CONTRIBUTING.md
-- [ ] CHANGELOG.md
-- [ ] LICENSE
+For a repository:
 
-#### Agente/Skill
-- [ ] Purpose and Capabilities
-- [ ] Interface Documentation
-- [ ] Usage Examples
-- [ ] Error Handling
-- [ ] Performance Characteristics
-- [ ] Limitations
+- README,
+- AGENTS.md,
+- ownership metadata,
+- CI definition,
+- maturity level.
 
-#### Dataset
-- [ ] Dataset Card
-- [ ] Schema Documentation
-- [ ] Data Dictionary
-- [ ] Quality Metrics
-- [ ] Licensing Information
+## Interpretation
 
-## Niveles de Completitud
+| Score | Meaning |
+|---|---|
+| 95-100% | Complete |
+| 80-94% | Mostly complete |
+| 60-79% | Documentation debt |
+| < 60% | Governance failure |
 
-### Por Sección
+## Paper Use
 
-| Sección | Vacío | Incompleto | Completo | Excelente |
-|---------|-------|-----------|----------|-----------|
-| Overview | ✗ | ~ | ✓ | ✓✓ |
-| Architecture | ✗ | ~ | ✓ | ✓✓ |
-| Usage | ✗ | ~ | ✓ | ✓✓ |
-
-### Puntuación Agregada
-
-- **Vacío** (0%): No hay documentación
-- **Incompleto** (1-50%): Documentación parcial
-- **Completo** (51-85%): Documentación suficiente
-- **Excelente** (86-100%): Documentación comprehensive
-
-## Objetivos Organizacionales
-
-| Período | Objetivo |
-|---------|----------|
-| Trimestre 1 | > 40% |
-| Trimestre 2 | > 60% |
-| Semestre 1 | > 75% |
-| Año 1 | > 85% |
-
-## Cómo Mejorar
-
-1. **Plantillas Claras**: Usar templates estándar
-2. **Automatización**: Generar docs donde sea posible
-3. **Revisión**: Incluir documentación en code review
-4. **Capacitación**: Entrenar en estándares
-5. **Herramientas**: Linters y checkers de documentación
-
-## Métrica de Calidad de Documentación
-
-Además de completitud, considerar:
-
-- **Claridad**: ¿Es fácil de entender?
-- **Actualidad**: ¿Está vigente?
-- **Precisión**: ¿Es correcta?
-- **Coherencia**: ¿Sigue estándares?
-
-## Reporte Trimestral
-
-| Categoría | Score | Tendencia | Acción |
-|-----------|-------|-----------|--------|
-| Requisitos | [X]% | ↑/→/↓ | |
-| Diseño | [X]% | ↑/→/↓ | |
-| Implementación | [X]% | ↑/→/↓ | |
-| Despliegue | [X]% | ↑/→/↓ | |
-| Operaciones | [X]% | ↑/→/↓ | |
-| **Total** | **[X]%** | **↑/→/↓** | |
+Use this metric to quantify documentation discipline and artifact availability across the KDD-governed platform.
 
 ---
 
-*Métrica de [00-kdd-governance](../README.md)*
+*Metric from [00-kdd-governance](../README.md)*

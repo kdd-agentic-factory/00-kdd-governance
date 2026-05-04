@@ -1,57 +1,65 @@
 # KDD Traceability Score
 
-## Propósito
-Medir el grado de trazabilidad en el ciclo KDD - desde requisitos hasta producción.
+## Function
 
-## Definición
-La puntuación de trazabilidad mide qué porcentaje de cambios en producción pueden ser rastreados directamente a requisitos aprobados y documentados.
+Measures how many artifacts have complete KDD traceability.
 
-## Cálculo
+This metric is one of the origin metrics for the paper because it quantifies whether the ecosystem preserves the chain from source data to interpretation, documentation and deployment evidence.
 
-$$
-\text{Traceability Score} = \frac{\text{Cambios con Trazabilidad Completa}}{\text{Cambios Totales}} \times 100\%
-$$
+## Formula
 
-## Métricas Relacionadas
+```text
+KDD Traceability Score =
+artifacts with KDD stage + source + transformation + interpretation + documentation
+/
+total artifacts
+```
 
-### Componentes de Trazabilidad
-1. **Requisito Documentado**: ✓/✗
-2. **Viabilidad Aprobada**: ✓/✗
-3. **Design Documentado**: ✓/✗
-4. **Tareas Registradas**: ✓/✗
-5. **Código Implementado**: ✓/✗
-6. **As-Built Documentado**: ✓/✗
-7. **Auditoría Disponible**: ✓/✗
+Percentage form:
 
-### Niveles de Completitud
+```text
+KTS = traceable_artifacts / total_artifacts * 100
+```
 
-- **100%**: Todas las etapas documentadas y aprobadas
-- **80-99%**: 6 de 7 componentes completados
-- **60-79%**: 4-5 de 7 componentes completados
-- **40-59%**: 3 de 7 componentes completados
-- **0-39%**: Menos de 3 componentes completados
+## Complete Traceability Definition
 
-## Objetivos Organizacionales
+An artifact is traceable only when it has:
 
-- **Inicial**: > 40%
-- **Meta Corto Plazo**: > 60%
-- **Meta Mediano Plazo**: > 80%
-- **Meta Largo Plazo**: > 95%
+- KDD stage.
+- Source.
+- Transformation record.
+- Interpretation record.
+- Documentation artifact.
 
-## Cómo Mejorar
+## Scope
 
-1. **Documentación Disciplinada**: Mantener templates actualizados
-2. **Aprobaciones Consistentes**: Requerir aprobación en cada etapa
-3. **Automatización**: Herramientas que conecten etapas
-4. **Auditoría**: Verificación periódica de trazabilidad
-5. **Capacitación**: Entrenar al equipo en procesos
+Applies to:
 
-## Frecuencia de Medición
+- requirements,
+- feasibility documents,
+- designs,
+- tasks,
+- datasets,
+- model cards,
+- experiment cards,
+- simulation results,
+- race recommendations,
+- as-built documents,
+- paper evidence.
 
-- **Mensual**: Cálculo general
-- **Por Proyecto**: Reporte detallado
-- **Trimestral**: Revisión estratégica
+## Interpretation
+
+| Score | Meaning |
+|---|---|
+| 95-100% | Strong traceability, paper-ready evidence |
+| 80-94% | Acceptable but gaps must be tracked |
+| 60-79% | Governance risk |
+| < 60% | Not acceptable for critical or paper evidence |
+
+## Paper Use
+
+Use this metric to report how much of the platform output can be traced from data/source to documented interpretation.
 
 ---
 
-*Métrica de [00-kdd-governance](../README.md)*
+*Metric from [00-kdd-governance](../README.md)*

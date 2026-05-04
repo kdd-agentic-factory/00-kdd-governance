@@ -1,69 +1,69 @@
 # Agentic Factor of Safety
 
-## Propósito
-Medir el nivel de seguridad y control en la operación de agentes autónomos.
+## Function
 
-## Definición
-El Factor de Seguridad Agentico es una puntuación que indica cuán seguro es permitir que un agente opere sin supervisión humana.
+Measures how safely agent-proposed actions remain inside governance policy.
 
-## Escala
+This is conceptually equivalent to a digital factor of safety, but applied to agentic autonomy. The intent is to preserve a safety margin: the system must not accept aggressive autonomy when actions leave the governance safety envelope.
 
-$$
-\text{Factor of Safety} = \text{min}(\text{Control Score}, \text{Reliability Score}, \text{Capability Score})
-$$
+## Base Formula
 
-### Factor of Safety por Nivel
+```text
+Agentic Factor of Safety =
+valid actions within policy
+/
+total actions proposed by agents
+```
 
-- **> 0.9**: Autónomo sin restricciones
-- **0.7 - 0.9**: Autónomo con monitoreo
-- **0.5 - 0.7**: Supervisado (requiere aprobación humana)
-- **0.3 - 0.5**: Asistido (humano primario)
-- **< 0.3**: Solo observador
+Percentage form:
 
-## Componentes
+```text
+AFoS_base = valid_policy_actions / total_agent_actions * 100
+```
 
-### Control Score (0-1)
+## Weighted Formula
 
-Mide qué tan bien puede controlarse el comportamiento del agente.
+```text
+AFoS =
+1 - (
+  critical blocked actions
+  + actions without evidence
+  + actions with omitted required approval
+) / total actions
+```
 
-- **Límites Claros**: ✓/✗ (0.25 puntos)
-- **Políticas Documentadas**: ✓/✗ (0.25 puntos)
-- **Puntos de Aprobación**: ✓/✗ (0.25 puntos)
-- **Auditoría Implementada**: ✓/✗ (0.25 puntos)
+## Count Definitions
 
-### Reliability Score (0-1)
+- `critical blocked actions`: actions blocked because they attempted critical execution outside policy.
+- `actions without evidence`: actions that lacked traceable artifacts or source evidence.
+- `actions with omitted required approval`: actions that required human approval but did not include it.
+- `total actions`: all proposed agent actions in the measurement window.
 
-Mide la confiabilidad del agente en entregar resultados correctos.
+## Interpretation
 
-- **Uptime**: [%] (0.3 puntos: 99%+ = 0.3, 95%+ = 0.2, < 95% = 0)
-- **Error Rate**: [%] (0.3 puntos: < 1% = 0.3, < 5% = 0.2, > 5% = 0)
-- **Test Coverage**: [%] (0.2 puntos: > 80% = 0.2, > 60% = 0.1, < 60% = 0)
-- **Production Incidents**: [Número] (0.2 puntos: 0 = 0.2, 1-2 = 0.1, > 2 = 0)
+| AFoS | Meaning |
+|---|---|
+| 0.95-1.00 | Strong safety margin |
+| 0.85-0.94 | Acceptable with monitoring |
+| 0.70-0.84 | Increased supervision required |
+| < 0.70 | Autonomy must be reduced or blocked |
 
-### Capability Score (0-1)
+## Scope
 
-Mide si el agente tiene las capacidades necesarias para su misión.
+Applies to:
 
-- **Skill Completeness**: [%] (0.5 puntos)
-- **Knowledge Base Accuracy**: [%] (0.5 puntos)
+- code modifications,
+- infrastructure changes,
+- model changes,
+- MCP tool calls,
+- race engineering recommendations,
+- simulation-driven recommendations,
+- AutoSkill promotion attempts.
 
-## Evaluación Periódica
+## Paper Use
 
-| Período | Evaluación |
-|---------|-----------|
-| Inicial | Antes de despliegue |
-| Semanal | Durante primeras 4 semanas |
-| Mensual | Primeros 3 meses |
-| Trimestral | Después de 3 meses |
-
-## Acciones Basadas en Factor of Safety
-
-- **> 0.9**: Aumentar autonomía, reducir monitoreo
-- **0.7 - 0.9**: Mantener estado actual, monitoreo normalizado
-- **0.5 - 0.7**: Aumentar supervisión, revisar diseño
-- **0.3 - 0.5**: Limitar operaciones, investigar problemas
-- **< 0.3**: Suspender operaciones, rediseñar
+Use this metric to quantify whether agentic autonomy remains inside the KDD governance envelope.
 
 ---
 
-*Métrica de [00-kdd-governance](../README.md)*
+*Metric from [00-kdd-governance](../README.md)*
