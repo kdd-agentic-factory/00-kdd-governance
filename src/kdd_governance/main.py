@@ -7,7 +7,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .middleware import RequestContextMiddleware
-from .routers import health, kdd, version
+from .routers import health, kdd, roles, version
 
 logger = logging.getLogger(__name__)
 
@@ -44,6 +44,7 @@ app.add_middleware(
 app.include_router(health.router, tags=["health"])
 app.include_router(version.router, tags=["version"])
 app.include_router(kdd.router, prefix="/kdd", tags=["kdd"])
+app.include_router(roles.router, prefix="/roles", tags=["roles"])
 
 logging.basicConfig(
     level=os.getenv("LOG_LEVEL", "INFO"),

@@ -1,0 +1,414 @@
+# KDD Agentic Factory — Actor Role Definitions
+# "Jarvis for Motorsport" — team profiles, capabilities and access policies
+#
+# Each actor role defines:
+#   - data_access: which classification levels they can see
+#   - allowed_skills: skills from 04-skills-autoskills-registry they can invoke
+#   - approval_authority: what decisions they can approve without escalation
+#   - mcp_tools: MCP tool categories available to their agent session
+#   - hermes_context: how Hermes AI should frame responses for this role
+#   - escalation_to: who to escalate high-risk decisions to
+
+version: "1.0"
+platform: kdd-agentic-factory
+updated: "2026-05-23"
+
+roles:
+
+  # ─── STRATEGIC LAYER ──────────────────────────────────────────────────────
+
+  team_principal:
+    display_name: "Team Principal"
+    description: >
+      Overall team director. Strategic and budget decisions.
+      Final approval authority for all high-risk actions.
+      Sees everything — all data classifications.
+    data_access:
+      - public
+      - internal
+      - confidential
+      - restricted
+    approval_authority:
+      - "race.apply_setup_change"
+      - "race.apply_engine_map_change"
+      - "kubernetes.deploy_production"
+      - "dataset.delete"
+      - "paper.publish"
+      - "digital_twin.run_what_if"
+      - "autoskill.promote"
+      - "budget.approve"
+    allowed_skills:
+      - generate_setup_recommendation
+      - generate_crew_chief_report
+      - run_what_if_simulation
+      - generate_simulation_report
+      - generate_paper_section
+      - generate_dataset_card
+      - run_kdd_pipeline
+      - analyze_tire_degradation
+      - generate_experiment_card
+    mcp_tools:
+      - "telemetry.*"
+      - "simulation.*"
+      - "documentation.*"
+      - "pipeline.*"
+      - "security.*"
+      - "governance.*"
+      - "paperclip.*"
+      - "hermes.*"
+    hermes_context: |
+      You are the AI advisor to the Team Principal. Provide high-level strategic analysis.
+      Always include budget impact, competitive implications, and risk/reward framing.
+      Escalate technical details to race engineers. Summarise with executive brevity.
+    escalation_to: null  # apex — no escalation needed
+
+  # ─── RACE OPERATIONS LAYER ────────────────────────────────────────────────
+
+  race_director:
+    display_name: "Race Director"
+    description: >
+      In-race decision maker. Owns real-time strategy, safety calls, and
+      communication with the championship director. Has race-operations authority.
+    data_access:
+      - public
+      - internal
+      - confidential
+    approval_authority:
+      - "race.apply_tire_strategy"
+      - "race.apply_engine_map_change"
+      - "digital_twin.run_what_if"
+    allowed_skills:
+      - generate_setup_recommendation
+      - generate_crew_chief_report
+      - run_what_if_simulation
+      - analyze_tire_degradation
+      - generate_simulation_report
+    mcp_tools:
+      - "telemetry.*"
+      - "simulation.*"
+      - "documentation.generate_crew_chief_report"
+      - "pipeline.query"
+    hermes_context: |
+      You are assisting the Race Director during a live session. Be concise — max 3
+      bullet points. Prioritise safety, then position, then tyre life. Flag any situation
+      requiring team principal notification with [ESCALATE].
+    escalation_to: team_principal
+
+  race_engineer:
+    display_name: "Race Engineer"
+    description: >
+      Lap-by-lap technical analysis, real-time setup changes, telemetry deep dives.
+      Primary technical interface between the rider/driver and the team.
+    data_access:
+      - public
+      - internal
+      - confidential
+    approval_authority:
+      - "race.apply_tire_strategy"
+      - "digital_twin.run_what_if"
+    allowed_skills:
+      - generate_setup_recommendation
+      - generate_crew_chief_report
+      - run_what_if_simulation
+      - analyze_tire_degradation
+      - generate_simulation_report
+      - run_kdd_pipeline
+      - generate_dataset_card
+    mcp_tools:
+      - "telemetry.*"
+      - "simulation.*"
+      - "documentation.generate_crew_chief_report"
+      - "pipeline.run"
+      - "pipeline.query"
+      - "patterns.search"
+    hermes_context: |
+      You are an expert race engineer assistant. Provide lap-by-lap technical analysis
+      backed by telemetry evidence. Use sector times, tyre temps, braking points and
+      throttle traces. Every recommendation must cite specific telemetry data.
+      Flag setup changes that need crew chief approval with [APPROVAL REQUIRED].
+    escalation_to: race_director
+
+  crew_chief:
+    display_name: "Crew Chief (Jefe de Mecánicos)"
+    description: >
+      Physical setup execution. Approves and implements ride height, suspension,
+      tyre strategy changes. Works from race engineer recommendations.
+    data_access:
+      - public
+      - internal
+      - confidential
+    approval_authority:
+      - "race.apply_setup_change"
+      - "race.apply_tire_strategy"
+    allowed_skills:
+      - generate_setup_recommendation
+      - generate_crew_chief_report
+      - analyze_tire_degradation
+    mcp_tools:
+      - "telemetry.query_session"
+      - "telemetry.compare_laps"
+      - "documentation.generate_crew_chief_report"
+    hermes_context: |
+      You are assisting the Crew Chief. Focus on physical setup changes: ride height,
+      spring rates, damper settings, tyre pressures and compounds. Quantify every change
+      (e.g. "+2 clicks rear rebound"). Flag anything that requires team principal sign-off.
+    escalation_to: race_director
+
+  strategy_engineer:
+    display_name: "Strategy Engineer"
+    description: >
+      Race strategy, pit stop windows, fuel loads, compound choice, competitor analysis.
+      Uses digital twin for what-if simulation of strategy alternatives.
+    data_access:
+      - public
+      - internal
+      - confidential
+    approval_authority:
+      - "race.apply_tire_strategy"
+      - "digital_twin.run_what_if"
+    allowed_skills:
+      - run_what_if_simulation
+      - generate_simulation_report
+      - analyze_tire_degradation
+      - generate_setup_recommendation
+    mcp_tools:
+      - "telemetry.*"
+      - "simulation.*"
+      - "pipeline.query"
+      - "patterns.search"
+    hermes_context: |
+      You are a race strategy AI assistant. Model pit window optimisation, fuel delta,
+      under/overcut scenarios and tyre degradation cliffs. Always present ≥2 strategy
+      alternatives with lap-time delta (±Δ seconds) and risk level for each.
+    escalation_to: race_director
+
+  # ─── ENGINEERING DISCIPLINES ──────────────────────────────────────────────
+
+  aerodynamics_engineer:
+    display_name: "Aerodynamics Engineer"
+    description: >
+      Downforce, drag, cooling balance. Setup optimisation for circuit-specific
+      aerodynamic configurations. Future: 3D part design for each GP.
+    data_access:
+      - public
+      - internal
+      - confidential
+    approval_authority:
+      - "digital_twin.run_what_if"
+    allowed_skills:
+      - run_what_if_simulation
+      - generate_simulation_report
+      - generate_setup_recommendation
+      - generate_design_doc
+      - generate_feasibility
+    mcp_tools:
+      - "telemetry.query_session"
+      - "simulation.*"
+      - "documentation.generate_design_doc"
+    hermes_context: |
+      You are an aerodynamics engineering assistant. Focus on downforce level selection,
+      drag-to-downforce balance, cooling requirements and aerodynamic setup sensitivity.
+      When circuit data is provided, recommend specific wing angle and flap configurations
+      with delta Cl/Cd and expected lap-time delta.
+    escalation_to: race_engineer
+
+  suspension_engineer:
+    display_name: "Suspension Engineer"
+    description: >
+      Chassis setup: springs, dampers, anti-roll bars, geometry.
+      Uses telemetry to tune suspension response corner by corner.
+    data_access:
+      - public
+      - internal
+      - confidential
+    approval_authority:
+      - "digital_twin.run_what_if"
+    allowed_skills:
+      - run_what_if_simulation
+      - generate_simulation_report
+      - generate_setup_recommendation
+      - analyze_tire_degradation
+    mcp_tools:
+      - "telemetry.query_session"
+      - "telemetry.compare_laps"
+      - "simulation.*"
+    hermes_context: |
+      You are a suspension engineering assistant. Focus on chassis kinematics, damper
+      curves, spring rates, anti-roll bar stiffness and tyre contact-patch behaviour.
+      Analyse corner-by-corner ride height and wheel-load data. Quantify all changes.
+    escalation_to: race_engineer
+
+  electronics_engineer:
+    display_name: "Electronics Engineer (ECU / ERS)"
+    description: >
+      Engine map changes, traction control, ERS deployment strategy, brake bias.
+      High-risk actions — physical performance effect on track.
+    data_access:
+      - public
+      - internal
+      - confidential
+    approval_authority:
+      - "race.apply_engine_map_change"
+    allowed_skills:
+      - run_what_if_simulation
+      - generate_setup_recommendation
+      - generate_crew_chief_report
+    mcp_tools:
+      - "telemetry.*"
+      - "simulation.run_scenario"
+      - "documentation.generate_crew_chief_report"
+    hermes_context: |
+      You are an electronics engineering assistant specialised in ECU, ERS and traction
+      systems. Focus on power delivery curves, energy harvest/deploy windows, throttle
+      maps and brake-by-wire balance. All engine map changes need crew chief approval
+      before radio instruction.
+    escalation_to: crew_chief
+
+  # ─── DATA & SCIENCE LAYER ─────────────────────────────────────────────────
+
+  data_scientist:
+    display_name: "Data Scientist"
+    description: >
+      KDD pipeline management, model validation, experiment tracking,
+      paper reproducibility. Access to anonymised telemetry for research.
+    data_access:
+      - public
+      - internal
+      - confidential
+    approval_authority:
+      - "autoskill.promote"
+      - "digital_twin.run_what_if"
+    allowed_skills:
+      - run_kdd_pipeline
+      - evaluate_rag_quality
+      - generate_experiment_card
+      - generate_dataset_card
+      - generate_model_card
+      - generate_paper_section
+      - validate_paper_section
+      - run_what_if_simulation
+      - analyze_tire_degradation
+    mcp_tools:
+      - "telemetry.*"
+      - "pipeline.*"
+      - "documentation.*"
+      - "simulation.*"
+      - "patterns.search"
+    hermes_context: |
+      You are a data science assistant for the KDD agentic platform. Help with pipeline
+      configuration, experiment design, statistical validation and paper reproducibility.
+      Always include confidence intervals, sample sizes and statistical significance.
+      Reference the KDD 6-phase model when describing data work.
+    escalation_to: team_principal
+
+  data_steward:
+    display_name: "Data Steward"
+    description: >
+      Data governance, anonymisation, GDPR/classification, lineage auditing.
+      Controls what data leaves the organisation.
+    data_access:
+      - public
+      - internal
+      - confidential
+      - restricted
+    approval_authority:
+      - "dataset.delete"
+      - "policies/export/validate"
+    allowed_skills:
+      - generate_dataset_card
+      - run_kdd_pipeline
+    mcp_tools:
+      - "telemetry.query_session"
+      - "pipeline.query"
+      - "security.*"
+      - "governance.*"
+    hermes_context: |
+      You are a data governance assistant. Focus on data classification, anonymisation
+      completeness, lineage chains and export compliance. Flag any data handling that
+      could expose restricted telemetry outside the approved data boundary.
+    escalation_to: team_principal
+
+  # ─── RESEARCH & EXTERNAL ──────────────────────────────────────────────────
+
+  researcher:
+    display_name: "Researcher / Academic"
+    description: >
+      Read-only access to public and anonymised internal data for academic analysis.
+      Cannot trigger physical actions. Can run simulations and generate papers.
+    data_access:
+      - public
+      - internal
+    approval_authority: []
+    allowed_skills:
+      - evaluate_rag_quality
+      - generate_experiment_card
+      - generate_paper_section
+      - validate_paper_section
+      - run_what_if_simulation
+      - generate_simulation_report
+      - analyze_tire_degradation
+    mcp_tools:
+      - "telemetry.query_anonymised"
+      - "simulation.run_scenario"
+      - "documentation.generate_paper_section"
+      - "pipeline.query"
+    hermes_context: |
+      You are a research assistant. Provide analysis grounded in published literature
+      and anonymised telemetry. Do not suggest physical setup changes. Focus on
+      reproducible findings, statistical rigour and academic citation.
+    escalation_to: data_steward
+
+# ─── PERMISSION MATRIX REFERENCE ──────────────────────────────────────────
+
+permission_matrix:
+  data_classifications:
+    public:
+      description: "Race results, circuit layouts, published literature"
+      accessible_to: all
+    internal:
+      description: "Anonymised telemetry, experimental results, simulation outputs"
+      accessible_to:
+        - team_principal
+        - race_director
+        - race_engineer
+        - crew_chief
+        - strategy_engineer
+        - aerodynamics_engineer
+        - suspension_engineer
+        - electronics_engineer
+        - data_scientist
+        - data_steward
+        - researcher
+    confidential:
+      description: "Raw telemetry, setup parameters, strategy decisions"
+      accessible_to:
+        - team_principal
+        - race_director
+        - race_engineer
+        - crew_chief
+        - strategy_engineer
+        - aerodynamics_engineer
+        - suspension_engineer
+        - electronics_engineer
+        - data_scientist
+        - data_steward
+    restricted:
+      description: "Rider biometric data, commercial contracts, IP-sensitive designs"
+      accessible_to:
+        - team_principal
+        - data_steward
+
+  approval_escalation_chain:
+    - electronics_engineer → crew_chief
+    - crew_chief → race_director
+    - suspension_engineer → race_engineer → race_director
+    - aerodynamics_engineer → race_engineer → race_director
+    - race_director → team_principal
+    - data_scientist → team_principal
+    - data_steward → team_principal
+
+  high_risk_actions:
+    - "race.apply_setup_change"
+    - "race.apply_engine_map_change"
+    - "kubernetes.deploy_production"
+    - "dataset.delete"
