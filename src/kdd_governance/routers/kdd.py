@@ -1,8 +1,11 @@
 """KDD governance validation endpoints."""
 from typing import Any, Dict, List, Optional
 
+import structlog
 from fastapi import APIRouter
 from pydantic import BaseModel
+
+_audit = structlog.get_logger("governance.audit")
 
 router = APIRouter()
 
@@ -135,12 +138,21 @@ async def validate_artifact(request: ArtifactValidationRequest):
             missing.append(req_field)
             score -= 0.1
 
-    return ArtifactValidationResult(
+    result = ArtifactValidationResult(
         valid=len(missing) == 0,
         traceability_score=max(0.0, round(score, 2)),
         missing_fields=missing,
         recommendations=recommendations,
     )
+    _audit.info(
+        "artifact_validated",
+        artifact_id=request.artifact_id,
+        artifact_type=request.artifact_type,
+        kdd_stage=request.kdd_stage,
+        valid=result.valid,
+        traceability_score=result.traceability_score,
+    )
+    return result
 
 
 @router.post("/validate-evidence-packet", response_model=EvidencePacketValidationResult)
