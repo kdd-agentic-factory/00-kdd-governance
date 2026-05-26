@@ -27,6 +27,19 @@ def test_health_shape(client):
     assert set(data.keys()) >= {"status", "service", "version", "environment"}
 
 
-def test_metrics_endpoint(client):
+def test_metrics_endpoint_returns_prometheus_format(client):
     resp = client.get("/metrics")
     assert resp.status_code == 200
+    assert "text/plain" in resp.headers["content-type"]
+    assert b"governance_http_requests_total" in resp.content
+
+
+def test_metrics_records_validation_counter(client):
+    client.post("/kdd/validate-artifact", json={
+        "artifact_id": "art-metrics-test",
+        "artifact_type": "dataset",
+        "kdd_stage": "selection",
+        "source_repository": "github.com/kdd/test",
+    })
+    resp = client.get("/metrics")
+    assert b"governance_validations_total" in resp.content

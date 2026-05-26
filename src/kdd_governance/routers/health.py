@@ -1,4 +1,4 @@
-"""Health and metrics for governance-policy-service."""
+"""Health endpoint for governance-policy-service."""
 import os
 from fastapi import APIRouter
 from pydantic import BaseModel
@@ -21,8 +21,3 @@ async def health():
         version="0.1.0",
         environment=os.getenv("APP_ENV", "local"),
     )
-
-
-@router.get("/metrics")
-async def metrics():
-    return {"service": "governance-policy-service", "metrics": {}}

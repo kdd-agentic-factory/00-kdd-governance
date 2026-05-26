@@ -7,10 +7,11 @@ import structlog
 
 from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
-from prometheus_client import CONTENT_TYPE_LATEST, Counter, Histogram, generate_latest
+from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
 
 from fastapi import Depends
 
+from .metrics import REQUEST_COUNT
 from .middleware import RequestContextMiddleware
 from .rate_limit import RateLimitMiddleware
 from .routers import health, kdd, roles, version
@@ -50,13 +51,6 @@ async def lifespan(application: FastAPI):
     logger.info("Shutting down %s", SERVICE_NAME)
 
 
-_REQUEST_COUNT = Counter(
-    "governance_http_requests_total", "Total HTTP requests", ["method", "path", "status_code"]
-)
-_VALIDATION_COUNT = Counter(
-    "governance_validations_total", "Artifact validations performed", ["artifact_type", "valid"]
-)
-
 app = FastAPI(
     title="KDD Governance Policy Service",
     version=VERSION,
@@ -81,7 +75,7 @@ app.add_middleware(
 @app.middleware("http")
 async def _metrics_middleware(request: Request, call_next):
     response = await call_next(request)
-    _REQUEST_COUNT.labels(
+    REQUEST_COUNT.labels(
         method=request.method, path=request.url.path, status_code=response.status_code
     ).inc()
     return response

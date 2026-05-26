@@ -5,6 +5,8 @@ import structlog
 from fastapi import APIRouter
 from pydantic import BaseModel
 
+from kdd_governance.metrics import VALIDATION_COUNT
+
 _audit = structlog.get_logger("governance.audit")
 
 router = APIRouter()
@@ -144,6 +146,7 @@ async def validate_artifact(request: ArtifactValidationRequest):
         missing_fields=missing,
         recommendations=recommendations,
     )
+    VALIDATION_COUNT.labels(artifact_type=request.artifact_type, valid=str(result.valid).lower()).inc()
     _audit.info(
         "artifact_validated",
         artifact_id=request.artifact_id,
