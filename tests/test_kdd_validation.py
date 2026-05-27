@@ -14,7 +14,7 @@ def client():
 # ── /kdd/stages ───────────────────────────────────────────────────────────────
 
 def test_list_stages(client):
-    resp = client.get("/kdd/stages")
+    resp = client.get("/api/v1/kdd/stages")
     assert resp.status_code == 200
     stages = resp.json()["stages"]
     assert len(stages) == 6
@@ -24,7 +24,7 @@ def test_list_stages(client):
 
 
 def test_stages_are_ordered(client):
-    stages = client.get("/kdd/stages").json()["stages"]
+    stages = client.get("/api/v1/kdd/stages").json()["stages"]
     orders = [s["order"] for s in stages]
     assert orders == sorted(orders)
 
@@ -32,7 +32,7 @@ def test_stages_are_ordered(client):
 # ── /kdd/artifact-types ───────────────────────────────────────────────────────
 
 def test_list_artifact_types(client):
-    resp = client.get("/kdd/artifact-types")
+    resp = client.get("/api/v1/kdd/artifact-types")
     assert resp.status_code == 200
     types = resp.json()["artifact_types"]
     assert "dataset" in types
@@ -43,7 +43,7 @@ def test_list_artifact_types(client):
 # ── /kdd/evidence-requirements ───────────────────────────────────────────────
 
 def test_evidence_requirements(client):
-    resp = client.get("/kdd/evidence-requirements")
+    resp = client.get("/api/v1/kdd/evidence-requirements")
     assert resp.status_code == 200
     reqs = resp.json()["requirements"]
     assert "pattern" in reqs
@@ -53,7 +53,7 @@ def test_evidence_requirements(client):
 # ── /kdd/traceability-rules ───────────────────────────────────────────────────
 
 def test_traceability_rules(client):
-    resp = client.get("/kdd/traceability-rules")
+    resp = client.get("/api/v1/kdd/traceability-rules")
     assert resp.status_code == 200
     rules = resp.json()["rules"]
     assert len(rules) > 0
@@ -70,7 +70,7 @@ def test_validate_valid_artifact(client):
         "evidence": [],
         "metadata": {},
     }
-    resp = client.post("/kdd/validate-artifact", json=payload)
+    resp = client.post("/api/v1/kdd/validate-artifact", json=payload)
     assert resp.status_code == 200
     data = resp.json()
     assert data["valid"] is True
@@ -84,7 +84,7 @@ def test_validate_artifact_missing_source_repo(client):
         "artifact_type": "dataset",
         "kdd_stage": "selection",
     }
-    resp = client.post("/kdd/validate-artifact", json=payload)
+    resp = client.post("/api/v1/kdd/validate-artifact", json=payload)
     assert resp.status_code == 200
     data = resp.json()
     assert data["valid"] is False
@@ -99,7 +99,7 @@ def test_validate_artifact_unknown_type(client):
         "kdd_stage": "selection",
         "source_repository": "github.com/kdd",
     }
-    resp = client.post("/kdd/validate-artifact", json=payload)
+    resp = client.post("/api/v1/kdd/validate-artifact", json=payload)
     assert resp.status_code == 200
     data = resp.json()
     assert data["valid"] is False
@@ -115,7 +115,7 @@ def test_validate_pattern_without_dataset_id(client):
         "evidence": [],
         "metadata": {},
     }
-    resp = client.post("/kdd/validate-artifact", json=payload)
+    resp = client.post("/api/v1/kdd/validate-artifact", json=payload)
     assert resp.status_code == 200
     data = resp.json()
     assert "dataset_id" in data["missing_fields"]
@@ -131,7 +131,7 @@ def test_validate_pattern_with_required_evidence(client):
         "dataset_id": "ds-001",
         "metadata": {},
     }
-    resp = client.post("/kdd/validate-artifact", json=payload)
+    resp = client.post("/api/v1/kdd/validate-artifact", json=payload)
     assert resp.status_code == 200
     data = resp.json()
     assert data["valid"] is True
@@ -150,7 +150,7 @@ def test_validate_evidence_packet_complete(client):
         ],
         "kdd_stages_covered": ["selection", "preprocessing", "transformation", "mining", "interpretation"],
     }
-    resp = client.post("/kdd/validate-evidence-packet", json=payload)
+    resp = client.post("/api/v1/kdd/validate-evidence-packet", json=payload)
     assert resp.status_code == 200
     data = resp.json()
     assert data["valid"] is True
@@ -165,7 +165,7 @@ def test_validate_evidence_packet_empty_sources(client):
         "sources": [],
         "kdd_stages_covered": ["selection"],
     }
-    resp = client.post("/kdd/validate-evidence-packet", json=payload)
+    resp = client.post("/api/v1/kdd/validate-evidence-packet", json=payload)
     assert resp.status_code == 200
     data = resp.json()
     assert data["valid"] is False
@@ -181,7 +181,7 @@ def test_validate_dataset_lineage_complete(client):
         "pattern_ids": ["p1"],
         "evidence_ids": ["e1"],
     }
-    resp = client.post("/kdd/validate-dataset-lineage", json=payload)
+    resp = client.post("/api/v1/kdd/validate-dataset-lineage", json=payload)
     assert resp.status_code == 200
     data = resp.json()
     assert data["lineage_complete"] is True
@@ -190,7 +190,7 @@ def test_validate_dataset_lineage_complete(client):
 
 def test_validate_dataset_lineage_incomplete(client):
     payload = {"dataset_id": "ds-002"}
-    resp = client.post("/kdd/validate-dataset-lineage", json=payload)
+    resp = client.post("/api/v1/kdd/validate-dataset-lineage", json=payload)
     assert resp.status_code == 200
     data = resp.json()
     assert data["lineage_complete"] is False
@@ -206,7 +206,7 @@ def test_validate_workflow_trace_complete(client):
         "artifacts_produced": ["a1", "a2"],
         "kdd_stages_covered": ["selection", "preprocessing", "mining"],
     }
-    resp = client.post("/kdd/validate-workflow-trace", json=payload)
+    resp = client.post("/api/v1/kdd/validate-workflow-trace", json=payload)
     assert resp.status_code == 200
     data = resp.json()
     assert data["valid"] is True
@@ -220,7 +220,7 @@ def test_validate_workflow_trace_missing_stage(client):
         "artifacts_produced": [],
         "kdd_stages_covered": ["selection"],
     }
-    resp = client.post("/kdd/validate-workflow-trace", json=payload)
+    resp = client.post("/api/v1/kdd/validate-workflow-trace", json=payload)
     assert resp.status_code == 200
     data = resp.json()
     assert data["valid"] is False

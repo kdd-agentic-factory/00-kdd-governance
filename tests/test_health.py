@@ -35,7 +35,7 @@ def test_metrics_endpoint_returns_prometheus_format(client):
 
 
 def test_metrics_records_validation_counter(client):
-    client.post("/kdd/validate-artifact", json={
+    client.post("/api/v1/kdd/validate-artifact", json={
         "artifact_id": "art-metrics-test",
         "artifact_type": "dataset",
         "kdd_stage": "selection",

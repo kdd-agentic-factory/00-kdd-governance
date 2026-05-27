@@ -64,11 +64,13 @@ app = FastAPI(
 
 app.add_middleware(RateLimitMiddleware, calls_per_minute=int(os.getenv("RATE_LIMIT_PER_MINUTE", "120")))
 app.add_middleware(RequestContextMiddleware)
+_cors_origins = [o for o in os.getenv("CORS_ORIGINS", "").split(",") if o]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
+    allow_origins=_cors_origins or ["*"],  # "*" only when env var is unset (local dev)
+    allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allow_headers=["*"],
+    allow_credentials=False,
 )
 
 
@@ -87,11 +89,12 @@ async def _metrics():
 
 
 _auth = [Depends(require_api_key)]
+_API_V1 = "/api/v1"
 
 app.include_router(health.router, tags=["health"])
 app.include_router(version.router, tags=["version"])
-app.include_router(kdd.router, prefix="/kdd", tags=["kdd"], dependencies=_auth)
-app.include_router(roles.router, prefix="/roles", tags=["roles"], dependencies=_auth)
+app.include_router(kdd.router, prefix=f"{_API_V1}/kdd", tags=["kdd"], dependencies=_auth)
+app.include_router(roles.router, prefix=f"{_API_V1}/roles", tags=["roles"], dependencies=_auth)
 
 _configure_otel(app)
 
