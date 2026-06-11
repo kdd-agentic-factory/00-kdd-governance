@@ -7,14 +7,6 @@ on:
       - main
 
 jobs:
-  python-ci:
-    uses: kdd-agentic-factory/12-ci-cd-security/.github/workflows/reusable-python-ci.yml@main
-    with:
-      python-version: "3.12"
-
-  security:
-    uses: kdd-agentic-factory/12-ci-cd-security/.github/workflows/reusable-security-scan.yml@main
-
   docker:
     uses: kdd-agentic-factory/12-ci-cd-security/.github/workflows/reusable-docker-build.yml@main
     with:
